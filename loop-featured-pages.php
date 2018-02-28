@@ -6,7 +6,9 @@
  * @subpackage WP-ZeroFour
  * @since WP-ZeroFour 1.0
  */
- 
+
+global $post;
+
 $args = array(
 	'meta_key'    => '_home_button_show',
 	'meta_value'  => 'true',
@@ -16,14 +18,15 @@ $args = array(
 );
 $featured_pages = get_posts( $args );
 ?>
-
 <div class="main-wrapper-style2">
 	<div class="inner">
 		<section class="container box-feature2">
 			<div class="row">
 <?php 
-foreach( $featured_pages as $section ) :
-	setup_postdata( $section );
+
+foreach( $featured_pages as $post ) :
+
+	setup_postdata( $post );
 	$button_label = get_post_meta( get_the_ID(), '_home_button_label', true ) ?: __( 'Learn More', 'wpzerofour' );
     $button_icon  = get_post_meta( get_the_ID(), '_home_button_icon' , true );
     $button_type  = get_post_meta( get_the_ID(), '_home_button_type' , true );
@@ -31,6 +34,7 @@ foreach( $featured_pages as $section ) :
 	
 	if( !empty( $button_icon ) ) :
 		$button_class = ' fa fa-' . $button_icon . '-circle';
+		// $button_class = ' fa fa-' . $button_icon;
 	endif;
 	if( !empty( $button_type ) && $button_type == 'secondary' ) :
 		$button_class = ' alt'. $button_class;
