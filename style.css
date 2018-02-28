@@ -1009,8 +1009,12 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 	#header-wrapper
 	{
-		background: url('images/stock/banner.jpg') top center;
-		background-size: 100%;
+		/*background: url('images/stock/banner.jpg') top center;*/
+		/*background-size: 100%;*/
+		background: url('images/stock/banner.jpg');
+		background-position: left, center;
+		background-size: cover;
+
 	}
 	
 		body.homepage #header-wrapper
