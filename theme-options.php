@@ -69,20 +69,39 @@ function wp04_theme_options_do_page() {
 			<?php settings_fields( 'wp04_options' ); ?>
 			<?php $options = get_option( 'wp04_theme_options' ); ?>
 	<?php 
+	$dispGeneral = "none";
+	$dispHomePage = "none";
+	$dispMediaSection = "none";
+	$dispContact = "none";
+	
 	if ( isset ( $_GET['tab'] ) ) 
 		$tab = $_GET['tab']; 
 	else 
 		$tab = 'general'; 
 
 	switch ( $tab ) :
-		case 'general' :
+		case 'general' : 
+			$dispGeneral = "block";
+			break; 
+		case 'homepage' : 
+			$dispHomePage = "block";
+			break; 
+		case 'media' : 
+			$dispMediaSection = "block";
+			break; 
+		case 'contact' : 
+			$dispContact = "block";
+			break; 
+	endswitch; 
+
 	?>
+		<div id = "dispGeneral"  style="display: <?= $dispGeneral;?>">	
 			<h3 class="title"><?php _e( 'Layout Options', 'wpzerofour' ); ?></h3>
 
 			<table class="form-table">
 				<tbody>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[header_img]"><?php _e( 'Header Background Image', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[header_img]"><?php _e( 'Header Background Image', 'wpzerofour' ); ?></label></th>
 						<td>
 							<input id="wp04_theme_options[header_img]" class="regular-text" type="text" name="wp04_theme_options[header_img]" value="<?php echo esc_url( $options['header_img'] ); ?>" /> 
 							<input id="upload_header_img_button" type="button" class="button" value="<?php _e( 'Upload Image', 'wpzerofour' ); ?>" />
@@ -97,7 +116,7 @@ function wp04_theme_options_do_page() {
 			<table class="form-table">
 				<tbody>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[gaID]"><?php _e( 'Google Analytics Profile ID', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[gaID]"><?php _e( 'Google Analytics Profile ID', 'wpzerofour' ); ?></label></th>
 						<td><input id="wp04_theme_options[gaID]" class="regular-text" type="text" name="wp04_theme_options[gaID]" value="<?php esc_attr_e( $options['gaID'] ); ?>" placeholder="e.g. UA-12345678-1" /></td>
 					</tr>
 					<tr>
@@ -122,51 +141,66 @@ function wp04_theme_options_do_page() {
 				});
 			});
 			</script>
-		<?php 
-			break; 
-		case 'homepage' : 
-		?>
+		</div>  <!-- END div id = "dispGeneral" -->	
+
+		<div id = "dispHomePage"  style="display: <?= $dispHomePage;?>">	
+
 			<h3 class="title"><?php _e( 'Centerpiece Settings', 'wpzerofour' ); ?></h3>
 
 			<table class="form-table">
 				<tbody>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_headline]"><?php _e( 'Main Headline', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_headline]"><?php _e( 'Main Headline', 'wpzerofour' ); ?></label></th>
 						<td><input id="wp04_theme_options[centerpiece_headline]" class="regular-text" type="text" name="wp04_theme_options[centerpiece_headline]" value="<?php esc_attr_e( $options['centerpiece_headline'] ); ?>" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_subheading]"><?php _e( 'Subheading', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_subheading]"><?php _e( 'Subheading', 'wpzerofour' ); ?></label></th>
 						<td><input id="wp04_theme_options[centerpiece_subheading]" class="regular-text" type="text" name="wp04_theme_options[centerpiece_subheading]" value="<?php esc_attr_e( $options['centerpiece_subheading'] ); ?>" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_label]"><?php _e( 'Button Label', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_label]"><?php _e( 'Button Label', 'wpzerofour' ); ?></label></th>
 						<td>
 							<input id="wp04_theme_options[centerpiece_button_label]" class="regular-text" type="text" name="wp04_theme_options[centerpiece_button_label]" value="<?php esc_attr_e( $options['centerpiece_button_label'] ); ?>" />
 							<span class="description"><?php _e('Leave blank to exclude button.', 'wpzerofour' ); ?></span>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_link]"><?php _e( 'Button Link', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_link]"><?php _e( 'Button Link', 'wpzerofour' ); ?></label></th>
 						<td><input id="wp04_theme_options[centerpiece_button_link]" class="regular-text" type="text" name="wp04_theme_options[centerpiece_button_link]" value="<?php echo esc_url( $options['centerpiece_button_link'] ); ?>" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_icon]"><?php echo _e( 'Button Icon', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_icon]"><?php echo _e( 'Button Icon', 'wpzerofour' ); ?></label></th>
 						<td>
+<?php
+			//OK 	check-circle
+			//OK 	info-circle
+			//REP 	minus-circle Minus Sign /// WAS  ?? 
+			//REP 	exclamation-circle Exclamation /// WAS cog Cog
+			//REP 	play-circle Play Button /// WAS arrow-o Arrow
+			//REP 	plus-circle Plus Sign /// WAS file File
+			//REP	times-circle Times Sign /// WAS user User
+			//NEW 	question-circle Question Mark /// WAS chart Chart
+			//NO 	dot-circle // didn't work
+			//NO	pause-circle // didn't work
+			//NO 	stop-circle // didn't work
+			//ALSO	removed file-text Text
+?>
 							<select id="wp04_theme_options[centerpiece_button_icon]" name="wp04_theme_options[centerpiece_button_icon]">
 								<option value="">-<?php echo _e( 'None', 'wpzerofour' ); ?>-</option>
-								<option value="arrow-o"<?php if( $options['centerpiece_button_icon'] == 'arrow-o' ) : ?> selected<?php endif; ?>>Arrow</option>
-								<option value="chart"<?php if( $options['centerpiece_button_icon'] == 'chart' ) : ?> selected<?php endif; ?>>Chart</option>
+
 								<option value="check"<?php if( $options['centerpiece_button_icon'] == 'check' ) : ?> selected<?php endif; ?>>Checkmark</option>
-								<option value="cog"<?php if( $options['centerpiece_button_icon'] == 'cog' ) : ?> selected<?php endif; ?>>Cog</option>
-								<option value="file"<?php if( $options['centerpiece_button_icon'] == 'file' ) : ?> selected<?php endif; ?>>File</option>
 								<option value="info"<?php if( $options['centerpiece_button_icon'] == 'info' ) : ?> selected<?php endif; ?>>Info</option>
-								<option value="file-text"<?php if( $options['centerpiece_button_icon'] == 'file-text' ) : ?> selected<?php endif; ?>>Text</option>
-								<option value="user"<?php if( $options['centerpiece_button_icon'] == 'user' ) : ?> selected<?php endif; ?>>User</option>
+								<option value="play"<?php if( $options['centerpiece_button_icon'] == 'play' ) : ?> selected<?php endif; ?>>Play Button</option>
+								<option value="plus"<?php if( $options['centerpiece_button_icon'] == 'plus' ) : ?> selected<?php endif; ?>>Plus Sign</option>
+								<option value="minus"<?php if( $options['centerpiece_button_icon'] == 'minus' ) : ?> selected<?php endif; ?>>Minus Sign</option>
+								<option value="user"<?php if( $options['centerpiece_button_icon'] == 'times' ) : ?> selected<?php endif; ?>>Times Sign</option>
+								<option value="question"<?php if( $options['centerpiece_button_icon'] == 'question' ) : ?> selected<?php endif; ?>>Question Mark</option>
+								<option value="exclamation"<?php if( $options['centerpiece_button_icon'] == 'exclamation' ) : ?> selected<?php endif; ?>>Exclamation</option>
 							</select>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_type]"><?php echo _e( 'Button Type', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_type]"><?php echo _e( 'Button Type', 'wpzerofour' ); ?></label></th>
 						<td>
 							<select id="wp04_theme_options[centerpiece_button_type]" name="wp04_theme_options[centerpiece_button_type]">
 								<option value="primary"<?php if( $options['centerpiece_button_type'] == 'primary' ) : ?> selected<?php endif; ?>>Primary</option>
@@ -176,21 +210,33 @@ function wp04_theme_options_do_page() {
 					</tr>
 				</tbody>
 			</table>
-		<?php 
-			break; 
-		case 'media' : 
-		?>
+		</div>  <!-- END div id = "dispHomePage" -->	
 
-		<?php 
-			break; 
-		case 'contact' : 
-		?>
+		<div id = "dispMediaSection"  style="display: <?= $dispMediaSection;?>">	
+
+			<h3 class="title"><?php _e( 'Media Section', 'wpzerofour' ); ?></h3>
+
+			<table class="form-table">
+				<tbody>
+					<tr>
+						<th scope="row"><label class="description" for="wp04_theme_options[site_logo]"><?php _e( 'Site Logo Image', 'wpzerofour' ); ?></label></th>
+						<td>
+							<input id="wp04_theme_options[site_logo]" class="regular-text" type="text" name="wp04_theme_options[site_logo]" value="<?php echo esc_url( $options['site_logo'] ); ?>" /> 
+							<input id="upload_site_logo_img_button" type="button" class="button" value="<?php _e( 'Upload Logo', 'wpzerofour' ); ?>" />
+							<span class="description"><?php _e('Ideal size is about 250x50 px.', 'wpzerofour' ); ?></span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>  <!-- END div id = "dispMediaSection" -->	
+
+		<div id = "dispContact"  style="display: <?= $dispContact;?>">	
 			<h3 class="title">Contact Information</h3>
 			
 			<table class="form-table">
 				<tbody>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[email]"><?php _e( 'Email', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[email]"><?php _e( 'Email', 'wpzerofour' ); ?></label></th>
 						<td><input id="wp04_theme_options[email]" class="regular-text" type="text" name="wp04_theme_options[email]" value="<?php esc_attr_e( $options['email'] ); ?>" placeholder="email address" /></td>
 					</tr>
 					<tr>
@@ -198,25 +244,25 @@ function wp04_theme_options_do_page() {
 						<td><input id="wp04_theme_options[phone]" class="regular-text" type="text" name="wp04_theme_options[phone]" value="<?php echo esc_textarea( $options['phone'] ); ?>" placeholder="phone number" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[address]"><?php _e( 'Address', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[address]"><?php _e( 'Address', 'wpzerofour' ); ?></label></th>
 						<td><textarea id="wp04_theme_options[address]" class="large-text" cols="30" rows="8" name="wp04_theme_options[address]"><?php esc_attr_e( $options['address'] ); ?></textarea></td>
 					</tr>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[social-link-1-label]"><?php _e( 'Social Link 1', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[social-link-1-label]"><?php _e( 'Social Link 1', 'wpzerofour' ); ?></label></th>
 						<td>
 							<input id="wp04_theme_options[social-link-1-label]" class="regular-text" type="text" name="wp04_theme_options[social-link-1-label]" value="<?php esc_attr_e( $options['social-link-1-label'] ); ?>" placeholder="<?php _e( 'link name', 'wpzerofour' ); ?>" /> 
 							<input id="wp04_theme_options[social-link-1-href]" class="regular-text" type="text" name="wp04_theme_options[social-link-1-href]" value="<?php esc_attr_e( $options['social-link-1-href'] ); ?>" placeholder="<?php _e( 'link url', 'wpzerofour' ); ?>" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[social-link-2-label]"><?php _e( 'Social Link 2', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[social-link-2-label]"><?php _e( 'Social Link 2', 'wpzerofour' ); ?></label></th>
 						<td>
-							<input id="wp04_theme_options[social-link-2-label]" class="regular-text" type="text" name="wp04_theme_options[social-link-2-label]" value="<?php esc_attr_e( $options['social-link-3-label'] ); ?>" placeholder="<?php _e( 'link name', 'wpzerofour' ); ?>" /> 
+							<input id="wp04_theme_options[social-link-2-label]" class="regular-text" type="text" name="wp04_theme_options[social-link-2-label]" value="<?php esc_attr_e( $options['social-link-2-label'] ); ?>" placeholder="<?php _e( 'link name', 'wpzerofour' ); ?>" /> 
 							<input id="wp04_theme_options[social-link-2-href]" class="regular-text" type="text" name="wp04_theme_options[social-link-2-href]" value="<?php esc_attr_e( $options['social-link-2-href'] ); ?>" placeholder="<?php _e( 'link url', 'wpzerofour' ); ?>" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[social-link-1-label]"><?php _e( 'Social Link 3', 'wpzerofour' ); ?></label></td>
+						<th scope="row"><label class="description" for="wp04_theme_options[social-link-1-label]"><?php _e( 'Social Link 3', 'wpzerofour' ); ?></label></th>
 						<td>
 							<input id="wp04_theme_options[social-link-3-label]" class="regular-text" type="text" name="wp04_theme_options[social-link-3-label]" value="<?php esc_attr_e( $options['social-link-3-label'] ); ?>" placeholder="<?php _e( 'link name', 'wpzerofour' ); ?>" /> 
 							<input id="wp04_theme_options[social-link-3-href]" class="regular-text" type="text" name="wp04_theme_options[social-link-3-href]" value="<?php esc_attr_e( $options['social-link-3-href'] ); ?>" placeholder="<?php _e( 'link url', 'wpzerofour' ); ?>" />
@@ -224,15 +270,11 @@ function wp04_theme_options_do_page() {
 					</tr>
 				</tbody>
 			</table>
-	<?php 
-			break; 
-	endswitch; 
-	?>
+		</div>  <!-- END div id = "dispContact" -->	
 			<p class="submit">
 				<input type="submit" class="button-primary" value="<?php _e( 'Save Options', 'wpzerofour' ); ?>" />
 			</p>
 		</form>
-	</div>
 	<?php
 }
 
