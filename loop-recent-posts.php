@@ -6,7 +6,7 @@
  * @subpackage WP-ZeroFour
  * @since WP-ZeroFour 1.0
  */
-
+ 
 // Set up and pull the main post to feature. Looped later, as it's shown second, but we need to know the ID to exclude it in the next loop
 $args1 = array(
 	'posts_per_page'      => 1,

@@ -24,7 +24,7 @@
  * @subpackage WP-ZeroFour
  * @since WP-ZeroFour 1.0
  */
-
+  
 /**
  * Register three WP-ZeroFour widget areas.
  *
