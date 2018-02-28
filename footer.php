@@ -8,10 +8,50 @@
  * @subpackage WP-ZeroFour
  * @since WP-ZeroFour 1.0
  */
+
+// error_reporting(E_ALL); ini_set('display_errors', 1);
+
+$wp04_theme_options = get_option( 'wp04_theme_options' );
+
+$wp04_contact_email = trim($wp04_theme_options['email']);
+$wp04_contact_phoneNumber = preg_replace('/[^0-9]/', '', trim($wp04_theme_options['phone']));
+$wp04_contact_address = trim($wp04_theme_options['address']);
+$wp04_contact_socialLabel1 = trim($wp04_theme_options['social-link-1-label']);
+$wp04_contact_socialLabel2 = trim($wp04_theme_options['social-link-2-label']);
+$wp04_contact_socialLabel3 = trim($wp04_theme_options['social-link-3-label']);
+$wp04_contact_socialHREF1 = trim($wp04_theme_options['social-link-1-href']);
+$wp04_contact_socialHREF2 = trim($wp04_theme_options['social-link-2-href']);
+$wp04_contact_socialHREF3 = trim($wp04_theme_options['social-link-3-href']);
+
+// new fields
+$wp04_contact_socialName1 = trim($wp04_theme_options['social-link-1-name']);
+$wp04_contact_socialName2 = trim($wp04_theme_options['social-link-2-name']);
+$wp04_contact_socialName3 = trim($wp04_theme_options['social-link-3-name']);
+$wp04_contact_url = trim($wp04_theme_options['url']);
+
+// $wp04_contact_urlLabel = trim($wp04_theme_options['url-label ']);
+$wp04_contact_urlLabel = "WWW";
+// $wp04_contact_urlDisplay = trim($wp04_theme_options['url-disp']);
+$wp04_contact_urlDisplay = "zdcs.com";
+// $wp04_contact_emailLabel = trim($wp04_theme_options['email-label']);
+$wp04_contact_emailLabel = "Email";
+// $wp04_contact_emailDisplay = trim($wp04_theme_options['email-disp']);
+$wp04_contact_emailDisplay = "info@west-la.info";
+//$wp04_contact_phoneLabel = trim($wp04_theme_options['phone-label']);
+$wp04_contact_phoneLabel = "Phone";
+// $wp04_contact_phoneDisplay = trim($wp04_theme_options['phone-disp']);
+$wp04_contact_phoneDisplay = "(877) West-LA-7";
+//$wp04_contact_addressLabel = trim($wp04_theme_options['address-label']);
+$wp04_contact_addressLabel = "Address";
+
+// $wp04_contact_ = trim($wp04_theme_options['']);
+
 ?>
 
 			<div id="footer-wrapper">
 				<footer id="footer" class="container">
+
+				
 					<div class="row">
 						<div class="3u">
 						<?php if ( is_active_sidebar( 'footer-1' ) ) : 
@@ -36,26 +76,40 @@
 										<div class="row">
 											<div class="6u">
 												<dl class="contact">
-													<dt>Twitter</dt>
-													<dd><a href="http://twitter.com/n33co">@n33co</a></dd>
-													<dt>Dribbble</dt>
-													<dd><a href="http://dribbble.com/n33">dribbble.com/n33</a></dd>
-													<dt>WWW</dt>
-													<dd><a href="http://n33.co">n33.co</a></dd>
-													<dt>Email</dt>
-													<dd><a href="mailto:aj%20-at-%20n33.co">aj -at- n33.co</a></dd>
+												<?php if ($wp04_contact_socialLabel1 != ""): ?>
+													<dt><?php echo $wp04_contact_socialLabel1; ?></dt>
+													<dd><a href="<?php echo $wp04_contact_socialHREF1; ?>"><?php echo $wp04_contact_socialName1; ?></a></dd>
+												<?php endif; 
+												if ($wp04_contact_socialLabel2 != ""): ?>
+													<dt><?php echo $wp04_contact_socialLabel2; ?></dt>
+													<dd><a href="<?php echo $wp04_contact_socialHREF2; ?>"><?php echo $wp04_contact_socialName2; ?></a></dd>
+												<?php endif; 
+												if ($wp04_contact_socialLabel3 != ""): ?>
+													<dt><?php echo $wp04_contact_socialLabel3; ?></dt>
+													<dd><a href="<?php echo $wp04_contact_socialHREF3; ?>"><?php echo $wp04_contact_socialName3; ?></a></dd>
+												<?php endif; 
+												if ($wp04_contact_urlLabel != ""): ?>
+													<dt><?php echo $wp04_contact_urlLabel; ?></dt>
+													<dd><a href="<?php echo $wp04_contact_url; ?>"><?php echo $wp04_contact_urlDisplay; ?></a></dd>
+												<?php endif; 
+												if ($wp04_contact_emailLabel != ""): ?>
+													<dt><?php echo $wp04_contact_emailLabel; ?></dt>
+													<dd><a href="mailto:<?php echo $wp04_contact_email; ?>"><?php echo $wp04_contact_emailDisplay; ?></a></dd>
+												<?php endif;  ?>
 												</dl>
 											</div>
 											<div class="6u">
 												<dl class="contact">
-													<dt>Address</dt>
+												<?php if ($wp04_contact_address != ""): ?>
+													<dt><?php echo $wp04_contact_addressLabel; ?></dt>
 													<dd>
-														1234 Fictional Rd<br />
-														Nashville, TN 00000-0000<br />
-														USA
+														<?php echo $wp04_contact_address; ?>
 													</dd>
-													<dt>Phone</dt>
-													<dd>(000) 000-0000</dd>
+												<?php endif; 
+												if ($wp04_contact_phoneDisplay != ""): ?>
+													<dt><?php echo $wp04_contact_phoneLabel; ?></dt>
+													<dd><?php if ($wp04_contact_phoneNumber != ""): ?><a href="tel:<?php echo $wp04_contact_phoneNumber; ?>"><?php endif; echo $wp04_contact_phoneDisplay; ?></a></dd>
+												<?php endif;  ?>
 												</dl>
 											</div>
 										</div>
@@ -68,7 +122,7 @@
 					<div class="row">
 						<div class="12u">
 							<div id="copyright">
-								Site content &copy; <?php bloginfo( 'name' ); ?>. All rights reserved | Images: <a href="http://fotogrph.com/">fotogrph</a> | Theme: <a href="http://about.me/michaelfienen">Michael Fienen</a> | Design: <a href="http://html5up.net/">HTML5 UP</a>
+								&copy; <?php bloginfo( 'name' ); ?>. All rights reserved
 							</div>  <!-- #copyright -->
 						</div>  <!-- .12u -->
 					</div>  <!-- .row -->
