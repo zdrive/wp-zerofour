@@ -11,6 +11,11 @@
  
  $wp04_theme_options = get_option( 'wp04_theme_options' );
  $wp04_custom_header = $wp04_theme_options['header_img'];
+ $wp04_custom_sitelogo = $wp04_theme_options['site_logo'];
+ $SiteLogo = get_bloginfo( 'name' );
+ if ($wp04_custom_sitelogo != ""){
+	$SiteLogo = "<img src='" . $wp04_custom_sitelogo . "' alt='" . get_bloginfo( 'name' ) . "' />";
+ }
 ?><!DOCTYPE HTML>
 <!--
 	ZeroFour 2.5 by HTML5 UP
@@ -19,9 +24,12 @@
 -->
 <html <?php language_attributes(); ?>>
 <head>
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<!-- <title><?php // wp_title( '|', true, 'right' ); ?></title> -->
+<title><?php bloginfo('name'); ?> | <?php is_front_page() ? bloginfo('description') : wp_title(''); ?></title>
+
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<?php bloginfo( 'description' ); ?>">
 	<meta name="keywords" content="">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
@@ -33,7 +41,7 @@
 	<!-- script src="<?php echo get_template_directory_uri(); ?>/js/skel.min.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/skel-panels.min.js"></script>
 	<noscript -->
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/skel-noscript.css">
+		<link rel="stylesheet" media="screen and (min-width: 960px)" href="<?php echo get_template_directory_uri(); ?>/css/skel-noscript.css">
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
 		<link rel="stylesheet" media="(min-width: 481px)" href="<?php echo get_template_directory_uri(); ?>/css/style-desktop.css">
 		<link rel="stylesheet" media="(min-width: 481px) and (max-width: 1000px)" href="<?php echo get_template_directory_uri(); ?>/css/style-1000px.css">
@@ -61,7 +69,7 @@ wp_head();
 								<header id="header">
 									<div class="inner">
 									
-											<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" id="logo"><?php bloginfo( 'name' ); ?></a></h1>
+											<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" id="logo"><?php echo $SiteLogo; ?></a></h1>
 										
 											<nav id="nav">
 											<!--
@@ -89,7 +97,8 @@ wp_head();
 													<li><a href="no-sidebar.html">No Sidebar</a></li>
 												</ul>
 											-->
-											<?php wp_nav_menu( array( 'theme_location' => 'Top Nav' ) ); ?>
+											<?php 
+											wp_nav_menu( array( 'theme_location' => 'Top Nav' ) ); ?>
 											</nav>  <!-- #nav -->
 									</div>  <!-- .inner -->
 								</header>  <!-- #header -->
