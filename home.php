@@ -31,28 +31,28 @@ get_header(); ?>
 								<div class="row">
 									<div class="4u">
 										<section>
-											<span class="image image-full"><img src="/zerofour/wp-content/themes/wp-zerofour/images/stock/pic01.jpg" alt="" /></span>
+											<span class="image image-full"><img src="/wp-content/themes/wp-zerofour-master/images/stock/pic01.jpg" alt="" /></span>
 											<header class="second fa fa-user">
-												<h3>OMFG Whats That</h3>
-												<span class="byline">Nevermind its just a wall lol</span>
+												<h3>Here's a Heading</h3>
+												<span class="byline">And a subtitle</span>
 											</header>
 										</section>
 									</div>
 									<div class="4u">
 										<section>
-											<span class="image image-full"><img src="/zerofour/wp-content/themes/wp-zerofour/images/stock/pic02.jpg" alt="" /></span>
+											<span class="image image-full"><img src="/wp-content/themes/wp-zerofour-master/images/stock/pic02.jpg" alt="" /></span>
 											<header class="second fa fa-cog">
-												<h3>Really Close Up</h3>
-												<span class="byline">This looks pretty harmless</span>
+												<h3>Also a Heading</h3>
+												<span class="byline">And Another subtitle</span>
 											</header>
 										</section>
 									</div>
 									<div class="4u">
 										<section>
-											<span class="image image-full"><img src="/zerofour/wp-content/themes/wp-zerofour/images/stock/pic03.jpg" alt="" /></span>
+											<span class="image image-full"><img src="/wp-content/themes/wp-zerofour-master/images/stock/pic03.jpg" alt="" /></span>
 											<header class="second fa fa-bar-chart-o">
-												<h3>Pretty Blue LEDs</h3>
-												<span class="byline">Just so many of them man</span>
+												<h3>Another Heading</h3>
+												<span class="byline">And yes, a subtitle</span>
 											</header>
 										</section>
 									</div>
