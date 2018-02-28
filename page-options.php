@@ -60,14 +60,14 @@ function wp04_meta_box_callback( $post ) {
     <p><label class="screen-reader-text" for="home_button_icon"><?php echo _e( 'Button Icon', 'wpzerofour' ); ?></label>
         <select id="home_button_icon" name="home_button_icon">
             <option value="">-<?php echo _e( 'None', 'wpzerofour' ); ?>-</option>
-            <option value="arrow-o"<?php if( $buttonIcon == 'arrow-o' ) : ?> selected<?php endif; ?>>Arrow</option>
-            <option value="chart"<?php if( $buttonIcon == 'chart' ) : ?> selected<?php endif; ?>>Chart</option>
             <option value="check"<?php if( $buttonIcon == 'check' ) : ?> selected<?php endif; ?>>Checkmark</option>
-            <option value="cog"<?php if( $buttonIcon == 'cog' ) : ?> selected<?php endif; ?>>Cog</option>
-            <option value="file"<?php if( $buttonIcon == 'file' ) : ?> selected<?php endif; ?>>File</option>
             <option value="info"<?php if( $buttonIcon == 'info' ) : ?> selected<?php endif; ?>>Info</option>
-            <option value="file-text"<?php if( $buttonIcon == 'file-text' ) : ?> selected<?php endif; ?>>Text</option>
-            <option value="user"<?php if( $buttonIcon == 'user' ) : ?> selected<?php endif; ?>>User</option>
+            <option value="play"<?php if( $buttonIcon == 'play' ) : ?> selected<?php endif; ?>>Play Button</option>
+            <option value="plus"<?php if( $buttonIcon == 'plus' ) : ?> selected<?php endif; ?>>Plus Sign</option>
+            <option value="minus"<?php if( $buttonIcon == 'minus' ) : ?> selected<?php endif; ?>>Minus Sign</option>
+            <option value="times"<?php if( $buttonIcon == 'times' ) : ?> selected<?php endif; ?>>Times Sign</option>
+            <option value="question"<?php if( $buttonIcon == 'question' ) : ?> selected<?php endif; ?>>Question Mark</option>
+            <option value="exclamation"<?php if( $buttonIcon == 'exclamation' ) : ?> selected<?php endif; ?>>Exclamation</option>
         </select>
     </p>
     <p><strong><?php echo _e( 'Button Type', 'wpzerofour' ); ?></strong></p>
