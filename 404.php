@@ -6,7 +6,7 @@
  * @subpackage WP-ZeroFour
  * @since WP-ZeroFour 1.0
  */
-
+ 
 get_header(); ?>
 				<div class="main-wrapper-style2">
 					<div class="inner">

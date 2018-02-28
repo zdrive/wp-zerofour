@@ -7,7 +7,7 @@
  * @since WP-ZeroFour 1.0
  */
 ?>
-
+ 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="major">
 		<h2><?php the_title(); ?></h2>
