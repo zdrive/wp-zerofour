@@ -29,19 +29,23 @@ $wp04_contact_socialName2 = trim($wp04_theme_options['social-link-2-name']);
 $wp04_contact_socialName3 = trim($wp04_theme_options['social-link-3-name']);
 $wp04_contact_url = trim($wp04_theme_options['url']);
 
-// $wp04_contact_urlLabel = trim($wp04_theme_options['url-label ']);
-$wp04_contact_urlLabel = "WWW";
-// $wp04_contact_urlDisplay = trim($wp04_theme_options['url-disp']);
-$wp04_contact_urlDisplay = "zdcs.com";
-// $wp04_contact_emailLabel = trim($wp04_theme_options['email-label']);
-$wp04_contact_emailLabel = "Email";
-// $wp04_contact_emailDisplay = trim($wp04_theme_options['email-disp']);
-$wp04_contact_emailDisplay = "info@west-la.info";
-//$wp04_contact_phoneLabel = trim($wp04_theme_options['phone-label']);
-$wp04_contact_phoneLabel = "Phone";
-// $wp04_contact_phoneDisplay = trim($wp04_theme_options['phone-disp']);
-$wp04_contact_phoneDisplay = "(877) West-LA-7";
-//$wp04_contact_addressLabel = trim($wp04_theme_options['address-label']);
+$wp04_contact_urlLabel = ($wp04_theme_options['url-label']);
+// $wp04_contact_urlLabel = "WWW";
+$wp04_contact_urlDisplay = trim($wp04_theme_options['url-disp']);
+	if ($wp04_contact_urlDisplay == "") {$wp04_contact_urlDisplay = $wp04_contact_url;}
+// $wp04_contact_urlDisplay = "zdcs.com";
+$wp04_contact_emailLabel = ($wp04_theme_options['email-label']);
+// $wp04_contact_emailLabel = "Email";
+$wp04_contact_emailDisplay = trim($wp04_theme_options['email-disp']);
+	if ($wp04_contact_emailDisplay == "") {$wp04_contact_emailDisplay = $wp04_contact_email;}
+// $wp04_contact_emailDisplay = "info@west-la.info";
+$wp04_contact_phoneLabel = ($wp04_theme_options['phone-label']);
+// $wp04_contact_phoneLabel = "Phone";
+$wp04_contact_phoneDisplay = trim($wp04_theme_options['phone-disp']);
+	// if ($wp04_contact_phoneDisplay == "") {$wp04_contact_phoneDisplay = $wp04_contact_phoneNumber;}
+// $wp04_contact_phoneDisplay = "(877) West-LA-7";
+
+// $wp04_contact_addressLabel = trim($wp04_theme_options['address-label']);
 $wp04_contact_addressLabel = "Address";
 
 // $wp04_contact_ = trim($wp04_theme_options['']);
@@ -90,12 +94,12 @@ $wp04_contact_addressLabel = "Address";
 												<?php endif; 
 												if ($wp04_contact_urlLabel != ""): ?>
 													<dt><?php echo $wp04_contact_urlLabel; ?></dt>
-													<dd><a href="<?php echo $wp04_contact_url; ?>"><?php echo $wp04_contact_urlDisplay; ?></a></dd>
+													<dd><?php if ($wp04_contact_url != ""): ?><a href="<?php echo $wp04_contact_url; ?>"><?php endif; ?><?php echo $wp04_contact_urlDisplay; ?></a></dd>
 												<?php endif; 
 												if ($wp04_contact_emailLabel != ""): ?>
 													<dt><?php echo $wp04_contact_emailLabel; ?></dt>
-													<dd><a href="mailto:<?php echo $wp04_contact_email; ?>"><?php echo $wp04_contact_emailDisplay; ?></a></dd>
-												<?php endif;  ?>
+													<dd><?php if ($wp04_contact_email != ""): ?><a href="mailto:<?php echo $wp04_contact_email; ?>"><?php endif;  ?><?php echo $wp04_contact_emailDisplay; ?></a></dd>
+												<?php endif; ?>
 												</dl>
 											</div>
 											<div class="6u">
