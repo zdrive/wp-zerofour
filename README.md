@@ -2,8 +2,34 @@
 
 WP-ZeroFour is a WordPress adaptation of of the responsive HTML template ZeroFour (v2.5) originally by @n33co (CC3.0 by; [html5up.net](http://html5up.net/)).
 
-Tested using the [Wordpress Content Framework](https://github.com/thequicksilver/wordpress-content-framework "Wordpress Content Framework").
+The initial conversion was performed in 2014 by thequicksilver (https://github.com/thequicksilver/wp-zerofour). I forked it to take on an easy task for my first Github project repository.
 
+There is a working demo here: http://www.west-la.info/
+
+#THIS DOCUMENT IS UNFINISHED, RELEASED AS A ROUGH DRAFT (2018-03-05)
+
+#Requirements and Resources
+1. Working WordPress installation
+2. The files from this repository
+3. Plugin: "WP Mobile Menu" by Takanakui4. 
+
+
+#Installation and Setup
+* Copy theme files
+* Select the theme
+* WP Admin... Appearance... Menus (must be named "Top Nav")
+* WP Admin... Appearance... WP-ZeroFour Options
+* wp-zerofour-mobile-menu-options.md
+
+
+#Demo Mode
+* When enabled, populates the site with sample content
+* If content is missing, Demo Mode will use sample content
+* Demo Mode is ON by default
+* WP-ZeroFour Options... General... Layout Options
+
+
+###
 #Original ZeroFour Readme Info
 
 ZeroFour 2.5 by HTML5 UP
