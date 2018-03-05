@@ -1,4 +1,4 @@
-[WP-ZeroFour Screenshot](/screenshot.png)
+[WP-ZeroFour Screenshot](/screenshot.png?raw=true)
 
 # WP-ZeroFour
 
