@@ -11,8 +11,7 @@ There is a working demo here: http://www.west-la.info/
 ## Requirements and Resources
 1. Working WordPress installation
 2. The files from this repository
-3. Plugin: "WP Mobile Menu" by Takanakui4. 
-
+3. Plugin: "WP Mobile Menu" by Takanakui 
 
 ## Installation and Setup
 * Copy theme files
@@ -20,7 +19,6 @@ There is a working demo here: http://www.west-la.info/
 * WP Admin... Appearance... Menus (must be named "Top Nav")
 * Mobile Menu: see "wp-zerofour-mobile-menu-options.md"
 * WP Admin... Appearance... WP-ZeroFour Options
-
 
 ## Demo Mode
 * When enabled, populates the site with sample content
@@ -35,6 +33,7 @@ There is a working demo here: http://www.west-la.info/
 
 ### Images
 * Unsplash: [unsplash.com](http://unsplash.com)
+* Freepik: [freepik.com](http://freepik.com)
 
 ### Icons
 * Font Awesome: [fontawesome.com](https://fontawesome.com/)
