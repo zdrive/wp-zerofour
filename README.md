@@ -2,7 +2,7 @@
 
 WP-ZeroFour is a WordPress adaptation of of the responsive HTML template ZeroFour (v2.5) originally by @n33co (CC3.0 by; [html5up.net](http://html5up.net/)).
 
-The initial conversion was performed in 2014 by thequicksilver. I forked it to take on an easy task for my first Github project repository.
+The initial conversion from HTML5 to WordPress was performed in 2014 by thequicksilver. I forked the project to take on an easy task for my first GitHub project repository. This implentation includes bug fixes and enhancements.
 
 There is a working demo here: http://www.west-la.info/
 
@@ -18,7 +18,7 @@ There is a working demo here: http://www.west-la.info/
 * Copy theme files
 * Select the theme
 * WP Admin... Appearance... Menus (must be named "Top Nav")
-* See wp-zerofour-mobile-menu-options.md
+* Mobile Menu: see "wp-zerofour-mobile-menu-options.md"
 * WP Admin... Appearance... WP-ZeroFour Options
 
 
@@ -28,19 +28,18 @@ There is a working demo here: http://www.west-la.info/
 * Demo Mode is ON by default
 * WP-ZeroFour Options... General... Layout Options
 
-## Credits and Acknowledgements:
+## Credits and Acknowledgements
 
-### The O.G.:
-* thequicksilver [thequicksilver/wp-zerofour](https://github.com/thequicksilver/wp-zerofour)
+### The O.G.
+* thequicksilver: [thequicksilver/wp-zerofour](https://github.com/thequicksilver/wp-zerofour)
 
-
-### Images:
-* unsplash [unsplash.com](http://unsplash.com)
+### Images
+* Unsplash: [unsplash.com](http://unsplash.com)
 
 ### Icons
-* Font Awesome [fontawesome.com](https://fontawesome.com/)
+* Font Awesome: [fontawesome.com](https://fontawesome.com/)
 
-### Other:
+### Other
 * jQuery (jquery.com)
 * html5shiv.js (@afarkas @jdalton @jon_neal @rem)
 * CSS3 Pie (css3pie.com)
