@@ -9,13 +9,40 @@
  * @since WP-ZeroFour 1.0
  */
  
+$wp04_demo_mode = true;
+
  $wp04_theme_options = get_option( 'wp04_theme_options' );
  $wp04_custom_header = $wp04_theme_options['header_img'];
  $wp04_custom_sitelogo = $wp04_theme_options['site_logo'];
  $SiteLogo = get_bloginfo( 'name' );
- if ($wp04_custom_sitelogo != ""){
+ 
+if( is_home() ) {
+	$centerpiece_headline     = $wp04_theme_options[ 'centerpiece_headline' ];
+	$centerpiece_subheading   = $wp04_theme_options[ 'centerpiece_subheading' ];
+	$centerpiece_button_label = $wp04_theme_options[ 'centerpiece_button_label' ];
+	$centerpiece_button_link  = $wp04_theme_options[ 'centerpiece_button_link' ];
+	$centerpiece_button_type  = $wp04_theme_options[ 'centerpiece_button_type' ];
+	$centerpiece_button_icon  = $wp04_theme_options[ 'centerpiece_button_icon' ];
+} // END if( is_home()
+
+if ($wp04_demo_mode){
+	if (empty($wp04_custom_header)){$wp04_custom_header = "../wp-content/themes/wp-zerofour-master/images/stock/banner_1600x450-demo.jpg";}
+	if (empty($wp04_custom_sitelogo)){$wp04_custom_sitelogo = "../wp-content/themes/wp-zerofour-master/images/stock/WP-ZeroFour-CoolText_250x45.gif";}
+	if( is_home() ) {
+		if (empty($centerpiece_headline)){$centerpiece_headline = '<strong>ZeroFour:</strong> A free responsive site template <br>built on HTML5 and CSS3 by <a href="http://html5up.net">HTML5 UP</a>';}
+		if (empty($centerpiece_subheading)){$centerpiece_subheading = "Does This Statement Make You Want to Click the Big Shiny Button?";}
+		if (trim($centerpiece_button_label) == ""){$centerpiece_button_label = "Yes It Does";}
+		if (trim($centerpiece_button_link) == ""){$centerpiece_button_link = "#";}
+		if (trim($centerpiece_button_type) == ""){$centerpiece_button_type ="primary";}
+		if (trim($centerpiece_button_icon) == ""){$centerpiece_button_icon ="check";}
+	} // END if( is_home()
+} // END if ($wp04_demo_mode)
+
+if ($wp04_custom_sitelogo != ""){
 	$SiteLogo = "<img src='" . $wp04_custom_sitelogo . "' alt='" . get_bloginfo( 'name' ) . "' />";
- }
+}
+
+
 ?><!DOCTYPE HTML>
 <!--
 	ZeroFour 2.5 by HTML5 UP
@@ -38,8 +65,8 @@
 	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.dropotron.min.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/config.js"></script>
-	<!-- script src="<?php echo get_template_directory_uri(); ?>/js/skel.min.js"></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/skel-panels.min.js"></script>
+	<!-- script src="<?php // echo get_template_directory_uri(); ?>/js/skel.min.js"></script>
+	<script src="<?php // echo get_template_directory_uri(); ?>/js/skel-panels.min.js"></script>
 	<noscript -->
 		<link rel="stylesheet" media="screen and (min-width: 960px)" href="<?php echo get_template_directory_uri(); ?>/css/skel-noscript.css">
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
@@ -105,39 +132,52 @@ wp_head();
 
 <?php 
 if( is_home() ) : 
-	$centerpiece_headline     = $wp04_theme_options[ 'centerpiece_headline' ];
-	$centerpiece_subheading   = $wp04_theme_options[ 'centerpiece_subheading' ];
-	$centerpiece_button_label = $wp04_theme_options[ 'centerpiece_button_label' ];
-	$centerpiece_button_link  = $wp04_theme_options[ 'centerpiece_button_link' ];
-	$centerpiece_button_type  = $wp04_theme_options[ 'centerpiece_button_type' ];
-	$centerpiece_button_icon  = $wp04_theme_options[ 'centerpiece_button_icon' ];
+
+	// $centerpiece_headline     = $wp04_theme_options[ 'centerpiece_headline' ];
+	// 	if (empty($centerpiece_headline)){$centerpiece_headline = '<strong>ZeroFour:</strong> A free responsive site template <br>built on HTML5 and CSS3 by <a href="http://html5up.net">HTML5 UP</a>';}
+
+	// $centerpiece_subheading   = $wp04_theme_options[ 'centerpiece_subheading' ];
+	// 	if (empty($centerpiece_subheading)){$centerpiece_subheading = "Does This Statement Make You Want to Click the Big Shiny Button?";}
+
+	// $centerpiece_button_label = $wp04_theme_options[ 'centerpiece_button_label' ];
+	// 	if (trim($centerpiece_button_label) == ""){$centerpiece_button_label = "Yes It Does";}
+
+	// $centerpiece_button_link  = $wp04_theme_options[ 'centerpiece_button_link' ];
+	// 	if (trim($centerpiece_button_link) == ""){$centerpiece_button_link = "#";}
+
+	// $centerpiece_button_type  = $wp04_theme_options[ 'centerpiece_button_type' ];
+	// 	if (trim($centerpiece_button_type) == ""){$centerpiece_button_type ="primary";}
+
+	// $centerpiece_button_icon  = $wp04_theme_options[ 'centerpiece_button_icon' ];
+	// 	if (trim($centerpiece_button_icon) == ""){$centerpiece_button_icon ="check";}
+
 ?>
 								<div id="banner">
-	<?php if( !empty( $centerpiece_headline ) ) : ?>
+									<?php if( !empty( $centerpiece_headline ) ) : ?>
 									<h2><?php echo $centerpiece_headline; ?></h2>
-	<?php 
-	endif; 
-	if( !empty( $centerpiece_subheading ) ) :
-	?>
-									<p><?php echo $centerpiece_subheading; ?></p>
-	<?php 
-	endif; 
-	if( !empty( $centerpiece_button_label ) ) :
-		if( !empty( $centerpiece_button_icon ) ) :
-			$centerpiece_button_class = ' fa fa-' . $centerpiece_button_icon . '-circle';
-		endif;
-		if( !empty( $centerpiece_button_type ) && $centerpiece_button_type == 'secondary' ) :
-			$centerpiece_button_class = ' alt'. $centerpiece_button_class;
-		endif;
-	?>
+									<?php 
+									endif; 
+									if( !empty( $centerpiece_subheading ) ) :
+									?>
+										<p><?php echo $centerpiece_subheading; ?></p>
+									<?php 
+									endif; 
+									if( !empty( $centerpiece_button_label ) ) :
+										if( !empty( $centerpiece_button_icon ) ) :
+											$centerpiece_button_class = ' fa fa-' . $centerpiece_button_icon . '-circle';
+										endif;
+										if( !empty( $centerpiece_button_type ) && $centerpiece_button_type == 'secondary' ) :
+											$centerpiece_button_class = ' alt'. $centerpiece_button_class;
+										endif;
+									?>
 									<a href="<?php echo $centerpiece_button_link; ?>" class="button big<?php echo $centerpiece_button_class; ?>"><?php echo $centerpiece_button_label; ?></a>
-	<?php endif; ?>
-								</div>
+									<?php endif; ?>
+								</div> <!-- id="banner" -->
 <?php endif; ?>
-						</div>
-					</div>
-				</div>
-			</div>
+						</div> <!-- class="12u" -->
+					</div> <!-- class="row" -->
+				</div> <!-- class="container" -->
+			</div> <!-- id="header-wrapper" -->
 		
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
