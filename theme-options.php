@@ -171,20 +171,6 @@ function wp04_theme_options_do_page() {
 					<tr>
 						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_icon]"><?php echo _e( 'Button Icon', 'wpzerofour' ); ?></label></th>
 						<td>
-<?php
-			//OK 	check-circle
-			//OK 	info-circle
-			//REP 	minus-circle Minus Sign /// WAS  ?? 
-			//REP 	exclamation-circle Exclamation /// WAS cog Cog
-			//REP 	play-circle Play Button /// WAS arrow-o Arrow
-			//REP 	plus-circle Plus Sign /// WAS file File
-			//REP	times-circle Times Sign /// WAS user User
-			//NEW 	question-circle Question Mark /// WAS chart Chart
-			//NO 	dot-circle // didn't work
-			//NO	pause-circle // didn't work
-			//NO 	stop-circle // didn't work
-			//ALSO	removed file-text Text
-?>
 							<select id="wp04_theme_options[centerpiece_button_icon]" name="wp04_theme_options[centerpiece_button_icon]">
 								<option value="">-<?php echo _e( 'None', 'wpzerofour' ); ?>-</option>
 
@@ -210,11 +196,27 @@ function wp04_theme_options_do_page() {
 					</tr>
 				</tbody>
 			</table>
+
+			<h3 class="title"><?php _e( 'Header Settings', 'wpzerofour' ); ?></h3>
+
+			<table class="form-table">
+				<tbody>
+					<tr>
+						<th scope="row"><label class="description" for="wp04_theme_options[major_heading]"><?php _e( 'Major Heading', 'wpzerofour' ); ?></label></th>
+						<td><input id="wp04_theme_options[major_heading]" class="regular-text" type="text" name="wp04_theme_options[major_heading]" value="<?php esc_attr_e( $options['major_heading'] ); ?>" placeholder="(e.g., This is an important heading)" /></td>
+					</tr>
+					<tr>
+						<th scope="row"><label class="description" for="wp04_theme_options[major_subheading]"><?php _e( 'Major Subheading', 'wpzerofour' ); ?></label></th>
+						<td><input id="wp04_theme_options[major_subheading]" class="regular-text" type="text" name="wp04_theme_options[major_subheading]" value="<?php esc_attr_e( $options['major_subheading'] ); ?>"  placeholder="(e.g., And this is where we talk about why we're &lt;strong>pretty awesome&lt;/strong> ...)"/></td>
+					</tr>
+				</tbody>
+			</table>
+
 		</div>  <!-- END div id = "dispHomePage" -->	
 
 		<div id = "dispMediaSection"  style="display: <?= $dispMediaSection;?>">	
 
-			<h3 class="title"><?php _e( 'Media Section', 'wpzerofour' ); ?></h3>
+			<h3 class="title"><?php _e( 'Site Media', 'wpzerofour' ); ?></h3>
 
 			<table class="form-table">
 				<tbody>
@@ -228,6 +230,36 @@ function wp04_theme_options_do_page() {
 					</tr>
 				</tbody>
 			</table>
+
+			<h3 class="title"><?php _e( 'Error 404 Page (404.php) Options', 'wpzerofour' ); ?></h3>
+
+			<table class="form-table">
+				<tbody>
+					<tr>
+						<th scope="row"><label class="description" for="wp04_theme_options[error404_heading]"><?php _e( 'Error 404 Heading', 'wpzerofour' ); ?></label></th>
+						<td><input id="wp04_theme_options[error404_heading]" class="regular-text" type="text" name="wp04_theme_options[error404_heading]" value="<?php esc_attr_e( $options['error404_heading'] ); ?>" placeholder="(e.g., Page Not Found)" /></td>
+					</tr>
+					<tr>
+						<th scope="row"><label class="description" for="wp04_theme_options[error404_heading]"><?php _e( 'Error 404 Subheading', 'wpzerofour' ); ?></label></th>
+						<td><input id="wp04_theme_options[error404_subheading]" class="regular-text" type="text" name="wp04_theme_options[error404_subheading]" value="<?php esc_attr_e( $options['error404_subheading'] ); ?>" placeholder="(e.g., Error 404)" /></td>
+					</tr>
+					<tr>
+						<th scope="row"><label class="description" for="wp04_theme_options[error404_image]"><?php _e( 'Error 404 Page Image', 'wpzerofour' ); ?></label></th>
+						<td>
+							<input id="wp04_theme_options[error404_image]" class="regular-text" type="text" name="wp04_theme_options[error404_image]" value="<?php echo esc_url( $options['error404_image'] ); ?>" placeholder="(Leave blank to use the built-in image)" /> 
+							<input id="upload_site_error404_img_button" type="button" class="button" value="<?php _e( 'Upload Logo', 'wpzerofour' ); ?>" />
+							<span class="description"><?php _e('Ideal size is about 1200 px wide', 'wpzerofour' ); ?></span>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label class="description" for="wp04_theme_options[error404_content]"><?php _e( 'Error 404 Content', 'wpzerofour' ); ?></label></th>
+						<td><textarea placeholder='(e.g., &lt;p style="text-align:center;">Error 404 &mdash; Page Not Found&lt;/p>)' id="wp04_theme_options[error404_content]" class="large-text" cols="1" rows="8" name="wp04_theme_options[error404_content]"><?php esc_attr_e( $options['error404_content'] ); ?></textarea></td>
+					</tr>
+
+				</tbody>
+			</table>
+
+
 		</div>  <!-- END div id = "dispMediaSection" -->	
 
 		<style> .regular-text32{width: 99%;} </style> <!-- Gotta Do What You Gotta Do -->

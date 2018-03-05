@@ -14,6 +14,16 @@
  * @since WP-ZeroFour 1.0
  */
 
+$wp04_demo_mode = true;
+
+ $wp04_theme_options = get_option( 'wp04_theme_options' );
+ $wp04_major_heading = $wp04_theme_options['major_heading'];
+ $wp04_major_subheading = $wp04_theme_options['major_subheading'];
+if ($wp04_demo_mode){
+	if (empty($wp04_major_heading)){$wp04_major_heading = "This is an important heading";}
+	if (empty($wp04_major_subheading)){$wp04_major_subheading = "And this is where we talk about why we're <strong>pretty awesome</strong>";}
+} // END if ($wp04_demo_mode)
+
 get_header(); ?>
 				<div class="main-wrapper-style1">
 					<div class="inner">
@@ -23,8 +33,8 @@ get_header(); ?>
 								<div class="row">
 									<div class="12u">
 										<header class="first major">
-											<h2>This is an important heading</h2>
-											<span class="byline">And this is where we talk about why we’re <strong>pretty awesome</strong> ...</span>
+											<h2><?php echo $wp04_major_heading; ?></h2>
+											<span class="byline"><?php echo $wp04_major_subheading; ?></span>
 										</header>
 									</div>
 								</div>
@@ -59,10 +69,7 @@ get_header(); ?>
 								</div>
 								<div class="row">
 									<div class="12u">
-										<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper 
-										bibendum ipsum, et tristique augue fringilla eu. Vivamus id risus vel dolor auctor euismod 
-										quis eget mi. Etiam eu ante risus. Aliquam erat volutpat. Aliquam luctus mattis lectus sit 
-										amet pulvinar. Nam nec turpis.</p>
+										<p>This text and the three headings above are hard-coded into home.php. Bummer, right? Oh well... To edit this area, open 'wp-content/themes/wp-zerofour-master/home.php' with a text editor and upload the updated file to your web server. The images are stored in the 'images/stock' folder as pic01.jpg, pic02.jpg, and pic03.jpg. You can adjust the Font Awesome icons in the heading class. The headings are H3 elements and the subtitles are called bylines. </p>
 									</div>
 								</div>
 							</section>
