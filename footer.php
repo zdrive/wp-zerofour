@@ -75,6 +75,7 @@ if ($wp04_demo_mode){
 	if (trim($wp04_contact_urlLabel) == ""){$wp04_contact_urlLabel = "WWW";}
 	if (trim($wp04_contact_url) == ""){$wp04_contact_url = "http://www.example.com/";}
 	if (trim($wp04_contact_urlDisplay) == ""){$wp04_contact_urlDisplay = "example.com";}
+
 //	if (trim(X) == ""){X = "";}
 } // END if ($wp04_demo_mode)
 
@@ -89,18 +90,80 @@ if ($wp04_demo_mode){
 						<div class="3u">
 						<?php if ( is_active_sidebar( 'footer-1' ) ) : 
 							dynamic_sidebar( 'footer-1' ); 
+
+						elseif ($wp04_demo_mode) :
+						 ?>
+							<section id="custom_html-2" class="widget_text widget widget_custom_html">
+								<h2 class="widget-title">Sidebar: Footer 1</h2>
+								<div class="textwidget custom-html-widget"><ul class="divided">
+									<li><a target="_blank" href="http://www.west-la.info/">WP-ZeroFour Demo Site</a></li>
+									<li><a target="_blank" href="https://github.com/zdrive/wp-zerofour">WP-ZeroFour Project</a></li>
+									<li><a target="_blank" href="https://html5up.net/zerofour">ZeroFour Template</a></li>
+									<li><a target="_blank" href="https://github.com/thequicksilver">github/thequicksilver</a></li>
+									<li><a target="_blank" href="https://github.com/zdrive">github/zdrive</a></li>
+									<li><a target="_blank" href="http://www.zdcs.com/">Z-Drive Computer Service</a></li>
+									<li><a target="_blank" href="https://unsplash.com/">Unsplash (photos)</a></li>
+									<li><a target="_blank" href="https://www.freepik.com/">Freepik (photos)</a></li>
+									<li><a target="_blank" href="https://cooltext.com/">CoolText (logos)</a></li>
+									<li><a target="_blank" href="https://www.google.com/">The Google</a></li>
+									</ul>
+								</div>
+							</section>
+						<?php 
+
 						endif; ?>
 						</div>  <!-- .3u -->
 
 						<div class="3u">
 						<?php if ( is_active_sidebar( 'footer-2' ) ) : 
 							dynamic_sidebar( 'footer-2' ); 
+						
+						elseif ($wp04_demo_mode) : 
+							?>
+							<section id="custom_html-3" class="widget_text widget widget_custom_html">
+								<h2 class="widget-title">Photo Contributors</h2>
+								<div class="textwidget custom-html-widget">
+									<ul class="divided">
+										<li><a target="_blank" href="https://unsplash.com/photos/LMlVa3QDEXs">Aaron Burden</a></li>
+										<li><a target="_blank" href="https://unsplash.com/photos/Ic0q_M542Is">Joe Pascavage</a></li>
+										<li><a target="_blank" href="https://unsplash.com/photos/eWFFLU2-Sik">Marten Bjork</a></li>
+										<li><a target="_blank" href="https://unsplash.com/photos/Oanp6vpk3A8">Matt Lamers</a></li>
+									</ul>
+								</div>
+							</section>
+							<section id="custom_html-4" class="widget_text widget widget_custom_html">
+								<h2 class="widget-title">Photo Contributors</h2>
+								<div class="textwidget custom-html-widget">
+									<ul class="divided">
+										<li><a target="_blank" href="https://unsplash.com/photos/JdNixbsLwS8">David Clode</a></li>
+										<li><a target="_blank" href="https://unsplash.com/photos/1gK3iHigzzM">Tyler Nix</a></li>
+										<li><a target="_blank" href="https://unsplash.com/photos/RovMihRLRes">Philip Brown</a></li>
+										<li><a target="_blank" href="https://unsplash.com/photos/B4cbBUCtSdg">Scott Webb</a></li>
+									</ul>
+								</div>
+							</section>
+							<?php
+
 						endif; ?>
 						</div>  <!-- .3u -->
 
 						<div class="6u">
 						<?php if ( is_active_sidebar( 'footer-3' ) ) : 
 							dynamic_sidebar( 'footer-3' ); 
+
+						elseif ($wp04_demo_mode) : 
+							?>
+
+							<section id="custom_html-5" class="widget_text widget widget_custom_html">
+								<h2 class="widget-title">What's This About?</h2>
+								<div class="textwidget custom-html-widget">
+									<p>Welcome to WP-ZeroFour. Produced by <a href="http://www.zdcs.com/">Z-Drive Computer Service</a>.	Original Design by <a href="http://html5up.net">HTML5 UP</a>, converted to WordPress by <a href="http://github.com/thequicksilver/wp-zerofour">thequicksilver</a> and <a href="http://github.com/zdrive/wp-zerofour">zdrive</a>.<br>
+									This text has been inserted by Demo Mode. Use the Widgets section of WP Admin to change the text here by dragging a widget or custom HTML into Sidebar 3. Change the panels to the left by modifying Footer 1 and Footer 2. After you drag content into a footer, the demo text will disappear. 
+									</p>
+									<a href="https://github.com/zdrive/wp-zerofour" class="button alt icon fa fa-arrow-circle-right">Learn More</a>
+								</div>
+							</section>
+							<?php
 						endif; ?>
 							<!-- Contact -->
 								<section>
