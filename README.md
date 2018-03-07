@@ -29,10 +29,15 @@ There is a working demo here: http://www.west-la.info/
 ## Credits and Acknowledgements
 
 ### The O.G.
+* ZeroFour Free Template: [HTML5 UP] (https://html5up.net/zerofour)
+* ZeroFour by Subscription: [Pixelarity] (https://pixelarity.com/zerofour)
+The original template design was released on HTML5 UP as a free download. The author has another subscription-based site called Pixelarity that offers the free templates, as well as some that are only available at Pixelarity. The subscription is a low fee (US$19/3mo as of March 2018) and allows you to download dozens of templates.
+
+### First Adaptation of ZeroFour template into WordPress
 * thequicksilver: [thequicksilver/wp-zerofour](https://github.com/thequicksilver/wp-zerofour)
 
 ### Images
-* Unsplash: [unsplash.com](http://unsplash.com)
+* Demo Images: [unsplash.com](http://unsplash.com)
 * 404 Image: [freepik.com](http://freepik.com)
 * Demo Logo: [cooltext.com] (https://cooltext.com/Logo-Design-Gold-Outline)
 
