@@ -7,6 +7,8 @@
  * @since WP-ZeroFour 1.0
  */
 
+// error_reporting(E_ALL); ini_set('display_errors', 1);
+
 global $post;
 
 $args = array(
@@ -25,13 +27,12 @@ $featured_pages = get_posts( $args );
 <?php 
 
 $i=0;
-// $button_label = $button_icon = $button_type = $subheading = [];
-// $theTitle = $theExcerpt = $thePermalink = [];
 
 foreach( $featured_pages as $post ) :
 
 	setup_postdata( $post );
-	$button_label[$i]	= get_post_meta( get_the_ID(), '_home_button_label', true ) ?: __( 'Learn More', 'wpzerofour' );
+//	$button_label[$i]	= get_post_meta( get_the_ID(), '_home_button_label', true ) ?: __( 'Learn More', 'wpzerofour' );
+	$button_label[$i]	= get_post_meta( get_the_ID(), '_home_button_label', true ) ? get_post_meta( get_the_ID(), '_home_button_label', true ) : __( 'Learn More', 'wpzerofour' );
     $button_icon[$i]	= get_post_meta( get_the_ID(), '_home_button_icon' , true );
     $button_type[$i]	= get_post_meta( get_the_ID(), '_home_button_type' , true );
     $subheading[$i]		= get_post_meta( get_the_ID(), '_subheading' , true );
@@ -51,6 +52,7 @@ foreach( $featured_pages as $post ) :
 	$i++;
 
 endforeach;
+
 wp_reset_postdata();
 
 if ($i < 2) {
