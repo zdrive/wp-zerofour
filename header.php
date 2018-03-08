@@ -26,8 +26,8 @@ if( is_home() ) {
 } // END if( is_home()
 
 if ($wp04_demo_mode){
-	if (empty($wp04_custom_header)){$wp04_custom_header = "/wp-content/themes/wp-zerofour-master/images/stock/banner_1600x450-demo.jpg";}
-	if (empty($wp04_custom_sitelogo)){$wp04_custom_sitelogo = "/wp-content/themes/wp-zerofour-master/images/stock/WP-ZeroFour-CoolText_250x45.gif";}
+	if (empty($wp04_custom_header)){$wp04_custom_header = get_template_directory_uri() . "/images/stock/banner_1600x450-demo.jpg";}
+	if (empty($wp04_custom_sitelogo)){$wp04_custom_sitelogo = get_template_directory_uri() . "/images/stock/WP-ZeroFour-CoolText_250x45.gif";}
 	if( is_home() ) {
 		if (empty($centerpiece_headline)){$centerpiece_headline = '<strong>ZeroFour:</strong> A free responsive site template <br>built on HTML5 and CSS3 by <a href="http://html5up.net">HTML5 UP</a>';}
 		if (empty($centerpiece_subheading)){$centerpiece_subheading = "Does This Statement Make You Want to Click the Big Shiny Button?";}
