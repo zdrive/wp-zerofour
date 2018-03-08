@@ -6,7 +6,7 @@
  * @subpackage WP-ZeroFour
  * @since WP-ZeroFour 1.0
  */
- 
+
 get_header(); ?>
 				<div class="main-wrapper-style2">
 					<div class="inner">
@@ -43,6 +43,7 @@ get_header(); ?>
 					</div>  <!-- .inner -->
 				</div>  <!-- .main-wrapper-style2 -->
 <?php get_template_part( 'loop', 'recent-posts' ); ?>
-			</div>
+			</div> <!-- .main-wrapper -->
+
 
 <?php get_footer(); ?>

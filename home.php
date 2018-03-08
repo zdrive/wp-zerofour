@@ -14,6 +14,8 @@
  * @since WP-ZeroFour 1.0
  */
 
+// error_reporting(E_ALL); ini_set('display_errors', 1);
+
 $wp04_demo_mode = true;
 
  $wp04_theme_options = get_option( 'wp04_theme_options' );
@@ -74,12 +76,13 @@ get_header(); ?>
 								</div>
 							</section>
 
-					</div>
-				</div>
+					</div> <!-- class="inner" -->
+				</div> <!-- class="main-wrapper-style1" -->
+					
 <?php 
 get_template_part( 'loop', 'featured-pages' );
 get_template_part( 'loop', 'recent-posts' ); 
 ?>
-			</div>
+			</div> <!-- .main-wrapper -->
 
 <?php get_footer(); ?>
