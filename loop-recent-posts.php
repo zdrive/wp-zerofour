@@ -85,7 +85,7 @@ if ($wp04_demo_mode){
 	$demoThumbnail[1] = "pic05.jpg";
 	$demoThumbnail[2] = "pic06.jpg";
 
-	$picStart = '<img width="180" height="167" src="/wp-content/themes/wp-zerofour-master/images/stock/';
+	$picStart = '<img width="180" height="167" src="' . get_template_directory_uri() . '/images/stock/';
 	$picEnd = '" class="attachment-blog-thumb size-blog-thumb wp-post-image" alt="">';
 
 	$numDemo = 0;

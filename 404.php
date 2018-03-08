@@ -18,7 +18,7 @@
 $wp04_demo_mode = true; 
 
 if ($wp04_demo_mode){
-	if (trim($error404_image) == ""){$error404_image = "/wp-content/themes/wp-zerofour-master/images/stock/404-error-warning-sign_1200x600.jpg";}
+	if (trim($error404_image) == ""){$error404_image = get_template_directory_uri() . "/images/stock/404-error-warning-sign_1200x600.jpg";}
 	if (trim($error404_heading) == ""){$error404_heading = "Page Not Found";}
 	if (trim($error404_subheading) == ""){$error404_subheading = "Error 404";}
 	if (trim($error404_content) == ""){$error404_content = '<p style="text-align:center;">Error 404 &mdash; Page Not Found</p>';}

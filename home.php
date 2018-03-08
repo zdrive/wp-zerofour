@@ -41,7 +41,7 @@ get_header(); ?>
 								<div class="row">
 									<div class="4u">
 										<section>
-											<span class="image image-full"><img src="/wp-content/themes/wp-zerofour-master/images/stock/pic01.jpg" alt="" /></span>
+											<span class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/stock/pic01.jpg" alt="" /></span>
 											<header class="second fa fa-user">
 												<h3>Here's a Heading</h3>
 												<span class="byline">And a subtitle</span>
@@ -50,7 +50,7 @@ get_header(); ?>
 									</div>
 									<div class="4u">
 										<section>
-											<span class="image image-full"><img src="/wp-content/themes/wp-zerofour-master/images/stock/pic02.jpg" alt="" /></span>
+											<span class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/stock/pic02.jpg" alt="" /></span>
 											<header class="second fa fa-cog">
 												<h3>Also a Heading</h3>
 												<span class="byline">And Another subtitle</span>
@@ -59,7 +59,7 @@ get_header(); ?>
 									</div>
 									<div class="4u">
 										<section>
-											<span class="image image-full"><img src="/wp-content/themes/wp-zerofour-master/images/stock/pic03.jpg" alt="" /></span>
+											<span class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/stock/pic03.jpg" alt="" /></span>
 											<header class="second fa fa-bar-chart-o">
 												<h3>Another Heading</h3>
 												<span class="byline">And yes, a subtitle</span>
@@ -69,7 +69,7 @@ get_header(); ?>
 								</div>
 								<div class="row">
 									<div class="12u">
-										<p>This text and the three headings above are hard-coded into home.php. Bummer, right? Oh well... To edit this area, open 'wp-content/themes/wp-zerofour-master/home.php' with a text editor and upload the updated file to your web server. The images are stored in the 'images/stock' folder as pic01.jpg, pic02.jpg, and pic03.jpg. You can adjust the Font Awesome icons in the heading class. The headings are H3 elements and the subtitles are called bylines. </p>
+										<p>This text and the three headings above are hard-coded into home.php. Bummer, right? Oh well... pulling the content from WordPress is on the list of things to do. Meanwhile, to edit this area, open 'home.php' with a text editor and upload the updated file to your web server. You can change the Font Awesome icons in the heading class. The headings are H3 elements and the subtitles are called bylines. The images are stored in the 'images/stock' folder as pic01.jpg, pic02.jpg, and pic03.jpg. </p>
 									</div>
 								</div>
 							</section>
