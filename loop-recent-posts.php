@@ -12,6 +12,7 @@
 // Set up and pull the main post to feature. Looped later, as it's shown second, but we need to know the ID to exclude it in the next loop
 $args1 = array(
 	'posts_per_page'      => 1,
+	// 'post__not_in'		  => array(1, 2),
 	'post__in'            => get_option( 'sticky_posts' ),
 	'ignore_sticky_posts' => 1
 );
@@ -22,7 +23,7 @@ $spotlight_id    = get_the_ID();
 // Get the rest of our posts for display
 $args2 = array(
 	'posts_per_page' => 3,
-	'post__not_in'   => array($spotlight_id)
+	'post__not_in'   => array(1, $spotlight_id)
 );
 $recent_query = new WP_Query( $args2 ); 
 
@@ -49,7 +50,8 @@ endif;  // END if ( $recent_query->have_posts() )
 	wp_reset_postdata();
 
 	$featuredString = false;
-	$featured_post = get_post( $spotlight_id );
+	if (intval($spotlight_id) > 2) {$featured_post = get_post( $spotlight_id );}
+
 	if ( isset( $featured_post ) ) :
 		setup_postdata( $featured_post );
 		// Change the string key used based on if the featured post is sticky or not
@@ -63,6 +65,8 @@ endif;  // END if ( $recent_query->have_posts() )
 		$TheAuthorLink_S = get_the_author_link();
 		if ( has_post_thumbnail() ) :
 			$TheThumbnail_S = get_the_post_thumbnail($TheID_S, 'featured-thumb' );
+		else:
+			$TheThumbnail_S = "";
 		endif;
 		$TheExcerpt_S = get_the_excerpt();
 	
