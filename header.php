@@ -26,8 +26,8 @@ if( is_home() ) {
 } // END if( is_home()
 
 if ($wp04_demo_mode){
-	if (empty($wp04_custom_header)){$wp04_custom_header = "../wp-content/themes/wp-zerofour-master/images/stock/banner_1600x450-demo.jpg";}
-	if (empty($wp04_custom_sitelogo)){$wp04_custom_sitelogo = "../wp-content/themes/wp-zerofour-master/images/stock/WP-ZeroFour-CoolText_250x45.gif";}
+	if (empty($wp04_custom_header)){$wp04_custom_header = "/wp-content/themes/wp-zerofour-master/images/stock/banner_1600x450-demo.jpg";}
+	if (empty($wp04_custom_sitelogo)){$wp04_custom_sitelogo = "/wp-content/themes/wp-zerofour-master/images/stock/WP-ZeroFour-CoolText_250x45.gif";}
 	if( is_home() ) {
 		if (empty($centerpiece_headline)){$centerpiece_headline = '<strong>ZeroFour:</strong> A free responsive site template <br>built on HTML5 and CSS3 by <a href="http://html5up.net">HTML5 UP</a>';}
 		if (empty($centerpiece_subheading)){$centerpiece_subheading = "Does This Statement Make You Want to Click the Big Shiny Button?";}
@@ -99,31 +99,7 @@ wp_head();
 											<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" id="logo"><?php echo $SiteLogo; ?></a></h1>
 										
 											<nav id="nav">
-											<!--
-												<ul>
-													<li class="current_page_item"><a href="index.html">Home</a></li>
-													<li>
-														<span>Dropdown</span>
-														<ul>
-															<li><a href="#">Lorem ipsum dolor</a></li>
-															<li><a href="#">Magna phasellus</a></li>
-															<li>
-																<span>Phasellus consequat</span>
-																<ul>
-																	<li><a href="#">Lorem ipsum dolor</a></li>
-																	<li><a href="#">Phasellus consequat</a></li>
-																	<li><a href="#">Magna phasellus</a></li>
-																	<li><a href="#">Etiam dolore nisl</a></li>
-																</ul>
-															</li>
-															<li><a href="#">Veroeros feugiat</a></li>
-														</ul>
-													</li>
-													<li><a href="left-sidebar.html">Left Sidebar</a></li>
-													<li><a href="right-sidebar.html">Right Sidebar</a></li>
-													<li><a href="no-sidebar.html">No Sidebar</a></li>
-												</ul>
-											-->
+
 											<?php 
 											wp_nav_menu( array( 'theme_location' => 'Top Nav' ) ); ?>
 											</nav>  <!-- #nav -->
@@ -131,27 +107,7 @@ wp_head();
 								</header>  <!-- #header -->
 
 <?php 
-if( is_home() ) : 
-
-	// $centerpiece_headline     = $wp04_theme_options[ 'centerpiece_headline' ];
-	// 	if (empty($centerpiece_headline)){$centerpiece_headline = '<strong>ZeroFour:</strong> A free responsive site template <br>built on HTML5 and CSS3 by <a href="http://html5up.net">HTML5 UP</a>';}
-
-	// $centerpiece_subheading   = $wp04_theme_options[ 'centerpiece_subheading' ];
-	// 	if (empty($centerpiece_subheading)){$centerpiece_subheading = "Does This Statement Make You Want to Click the Big Shiny Button?";}
-
-	// $centerpiece_button_label = $wp04_theme_options[ 'centerpiece_button_label' ];
-	// 	if (trim($centerpiece_button_label) == ""){$centerpiece_button_label = "Yes It Does";}
-
-	// $centerpiece_button_link  = $wp04_theme_options[ 'centerpiece_button_link' ];
-	// 	if (trim($centerpiece_button_link) == ""){$centerpiece_button_link = "#";}
-
-	// $centerpiece_button_type  = $wp04_theme_options[ 'centerpiece_button_type' ];
-	// 	if (trim($centerpiece_button_type) == ""){$centerpiece_button_type ="primary";}
-
-	// $centerpiece_button_icon  = $wp04_theme_options[ 'centerpiece_button_icon' ];
-	// 	if (trim($centerpiece_button_icon) == ""){$centerpiece_button_icon ="check";}
-
-?>
+if( is_home() ) : ?>
 								<div id="banner">
 									<?php if( !empty( $centerpiece_headline ) ) : ?>
 									<h2><?php echo $centerpiece_headline; ?></h2>
@@ -173,7 +129,7 @@ if( is_home() ) :
 									<a href="<?php echo $centerpiece_button_link; ?>" class="button big<?php echo $centerpiece_button_class; ?>"><?php echo $centerpiece_button_label; ?></a>
 									<?php endif; ?>
 								</div> <!-- id="banner" -->
-<?php endif; ?>
+<?php endif; // END if( is_home() ) ?>
 						</div> <!-- class="12u" -->
 					</div> <!-- class="row" -->
 				</div> <!-- class="container" -->
