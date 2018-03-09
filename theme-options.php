@@ -94,12 +94,25 @@ function wp04_theme_options_do_page() {
 			break; 
 	endswitch; 
 
+$DemoMode = $options[demo_mode];
+$DemoModeCheckedTrue = $DemoModeCheckedFalse = "";
+if ($DemoMode == ""){$DemoMode = "true";}
+if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeCheckedFalse = " checked";}
+
 	?>
 		<div id = "dispGeneral"  style="display: <?= $dispGeneral;?>">	
 			<h3 class="title"><?php _e( 'Layout Options', 'wpzerofour' ); ?></h3>
 
 			<table class="form-table">
 				<tbody>
+					<tr>
+						<th scope="row"><?php _e( 'Demo Mode', 'wpzerofour' ); ?></th>
+						<td>
+							<label class="description" for="wp04_theme_options[demo_mode]-true">True&nbsp;</label><input type="radio"<?php echo $DemoModeCheckedTrue; ?> id="wp04_theme_options[demo_mode]-true" name="wp04_theme_options[demo_mode]" value="true" />
+							&nbsp;&nbsp;<label class="description" for="wp04_theme_options[demo_mode]-false">False&nbsp;</label><input type="radio"<?php echo $DemoModeCheckedFalse; ?> id="wp04_theme_options[demo_mode]-false" name="wp04_theme_options[demo_mode]" value="false" />
+							<span class="description"><?php _e('Demo Mode fills your site with sample content, and tells you how to update it.', 'wpzerofour' ); ?></span>
+						</td>
+					</tr>
 					<tr>
 						<th scope="row"><label class="description" for="wp04_theme_options[header_img]"><?php _e( 'Header Background Image', 'wpzerofour' ); ?></label></th>
 						<td>

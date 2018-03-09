@@ -16,15 +16,18 @@
 
 // error_reporting(E_ALL); ini_set('display_errors', 1);
 
-$wp04_demo_mode = true;
+$wp04_theme_options = get_option( 'wp04_theme_options' );
+$wp04_major_heading = $wp04_theme_options['major_heading'];
+$wp04_major_subheading = $wp04_theme_options['major_subheading'];
 
- $wp04_theme_options = get_option( 'wp04_theme_options' );
- $wp04_major_heading = $wp04_theme_options['major_heading'];
- $wp04_major_subheading = $wp04_theme_options['major_subheading'];
-if ($wp04_demo_mode){
+// DEMO MODE BEGIN
+$wp04_demo_mode = $wp04_theme_options['demo_mode'];
+
+if (trim(strtolower($wp04_demo_mode)) != "false"){
 	if (empty($wp04_major_heading)){$wp04_major_heading = "This is an important heading";}
 	if (empty($wp04_major_subheading)){$wp04_major_subheading = "And this is where we talk about why we're <strong>pretty awesome</strong>";}
 } // END if ($wp04_demo_mode)
+// DEMO MODE END
 
 get_header(); ?>
 				<div class="main-wrapper-style1">

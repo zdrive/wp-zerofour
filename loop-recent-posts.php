@@ -9,6 +9,12 @@
 
 // error_reporting(E_ALL); ini_set('display_errors', 1);
 
+
+// DEMO MODE BEGIN
+$wp04_theme_options = get_option( 'wp04_theme_options' );
+$wp04_demo_mode = $wp04_theme_options['demo_mode'];
+// DEMO MODE END
+
 // Set up and pull the main post to feature. Looped later, as it's shown second, but we need to know the ID to exclude it in the next loop
 $args1 = array(
 	'posts_per_page'      => 1,
@@ -75,10 +81,11 @@ endif;  // END if ( $recent_query->have_posts() )
 
 // endif;  // END if ( $recent_query->have_posts() )
 
-// DEMO MODE
-$wp04_demo_mode = true; 
+// $wp04_theme_options = get_option( 'wp04_theme_options' );
+// DEMO MODE BEGIN
+// $wp04_demo_mode = $wp04_theme_options['demo_mode'];
 
-if ($wp04_demo_mode){
+if (trim(strtolower($wp04_demo_mode)) != "false"){
 	$demoTitle[0] = "Repairing a Hyperspace Window";
 	$demoTitle[1] = "Adventuring with a Knee Injury";
 	$demoTitle[2] = "Preparing for Y2K38";
@@ -119,9 +126,8 @@ if ($wp04_demo_mode){
 		$TheThumbnail_S = $picStart . "pic07.jpg" . $picEnd;
 	} // END if (trim($TheID_S) == "")
 
-
 } // END if ($wp04_demo_mode)
-
+// DEMO MODE END
 ?>
 
 <div class="main-wrapper-style3">

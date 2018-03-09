@@ -9,8 +9,6 @@
  * @since WP-ZeroFour 1.0
  */
  
-$wp04_demo_mode = true;
-
  $wp04_theme_options = get_option( 'wp04_theme_options' );
  $wp04_custom_header = $wp04_theme_options['header_img'];
  $wp04_custom_sitelogo = $wp04_theme_options['site_logo'];
@@ -25,7 +23,10 @@ if( is_home() ) {
 	$centerpiece_button_icon  = $wp04_theme_options[ 'centerpiece_button_icon' ];
 } // END if( is_home()
 
-if ($wp04_demo_mode){
+// DEMO MODE BEGIN
+$wp04_demo_mode = $wp04_theme_options['demo_mode'];
+
+if (trim(strtolower($wp04_demo_mode)) != "false"){
 	if (empty($wp04_custom_header)){$wp04_custom_header = get_template_directory_uri() . "/images/stock/banner_1600x450-demo.jpg";}
 	if (empty($wp04_custom_sitelogo)){$wp04_custom_sitelogo = get_template_directory_uri() . "/images/stock/WP-ZeroFour-CoolText_250x45.gif";}
 	if( is_home() ) {
@@ -37,6 +38,7 @@ if ($wp04_demo_mode){
 		if (trim($centerpiece_button_icon) == ""){$centerpiece_button_icon ="check";}
 	} // END if( is_home()
 } // END if ($wp04_demo_mode)
+// DEMO MODE END
 
 if ($wp04_custom_sitelogo != ""){
 	$SiteLogo = "<img src='" . $wp04_custom_sitelogo . "' alt='" . get_bloginfo( 'name' ) . "' />";
@@ -51,7 +53,6 @@ if ($wp04_custom_sitelogo != ""){
 -->
 <html <?php language_attributes(); ?>>
 <head>
-	<!-- <title><?php // wp_title( '|', true, 'right' ); ?></title> -->
 <title><?php bloginfo('name'); ?> | <?php is_front_page() ? bloginfo('description') : wp_title(''); ?></title>
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -97,15 +98,16 @@ wp_head();
 									<div class="inner">
 									
 											<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" id="logo"><?php echo $SiteLogo; ?></a></h1>
-										
 											<nav id="nav">
-
 											<?php 
-											wp_nav_menu( array( 'theme_location' => 'Top Nav' ) ); ?>
+												// wp_nav_menu( array( 'theme_location' => 'Top Nav' ) ); 
+												wp_nav_menu( array(
+												'menu' => 'Top Nav'
+    											 ) ); 
+    										?>
 											</nav>  <!-- #nav -->
 									</div>  <!-- .inner -->
 								</header>  <!-- #header -->
-
 <?php 
 if( is_home() ) : ?>
 								<div id="banner">

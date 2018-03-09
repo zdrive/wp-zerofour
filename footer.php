@@ -13,8 +13,6 @@
 
 $wp04_theme_options = get_option( 'wp04_theme_options' );
 
-$wp04_demo_mode = true; 
-
 $wp04_contact_email = trim($wp04_theme_options['email']);
 $wp04_contact_phoneNumber = preg_replace('/[^0-9]/', '', trim($wp04_theme_options['phone']));
 $wp04_contact_address = trim($wp04_theme_options['address']);
@@ -45,9 +43,10 @@ $wp04_contact_phoneDisplay = trim($wp04_theme_options['phone-disp']);
 $wp04_contact_addressLabel = "Address";
 // This field not in WP ZeroFour Settings
 
-// $wp04_contact_ = trim($wp04_theme_options['']);
+// DEMO MODE BEGIN
+$wp04_demo_mode = $wp04_theme_options['demo_mode'];
 
-if ($wp04_demo_mode){
+if (trim(strtolower($wp04_demo_mode)) != "false"){
 
 	if (trim($wp04_contact_emailLabel) == ""){$wp04_contact_emailLabel = "Email";}
 	if (trim($wp04_contact_email) == ""){$wp04_contact_email = "info@example.com";}
@@ -76,22 +75,21 @@ if ($wp04_demo_mode){
 	if (trim($wp04_contact_url) == ""){$wp04_contact_url = "http://www.example.com/";}
 	if (trim($wp04_contact_urlDisplay) == ""){$wp04_contact_urlDisplay = "example.com";}
 
-//	if (trim(X) == ""){X = "";}
 } // END if ($wp04_demo_mode)
-
+// DEMO MODE END
 
 ?>
 
 			<div id="footer-wrapper">
 				<footer id="footer" class="container">
 
-				
 					<div class="row">
 						<div class="3u">
 						<?php if ( is_active_sidebar( 'footer-1' ) ) : 
 							dynamic_sidebar( 'footer-1' ); 
 
-						elseif ($wp04_demo_mode) :
+// DEMO MODE BEGIN
+						elseif (trim(strtolower($wp04_demo_mode)) != "false") :
 						 ?>
 							<section id="custom_html-2" class="widget_text widget widget_custom_html">
 								<h2 class="widget-title">Sidebar: Footer 1</h2>
@@ -110,7 +108,7 @@ if ($wp04_demo_mode){
 								</div>
 							</section>
 						<?php 
-
+// DEMO MODE END
 						endif; ?>
 						</div>  <!-- .3u -->
 
@@ -118,7 +116,8 @@ if ($wp04_demo_mode){
 						<?php if ( is_active_sidebar( 'footer-2' ) ) : 
 							dynamic_sidebar( 'footer-2' ); 
 						
-						elseif ($wp04_demo_mode) : 
+// DEMO MODE BEGIN
+						elseif (trim(strtolower($wp04_demo_mode)) != "false") :
 							?>
 							<section id="custom_html-3" class="widget_text widget widget_custom_html">
 								<h2 class="widget-title">Photo Contributors</h2>
@@ -143,7 +142,7 @@ if ($wp04_demo_mode){
 								</div>
 							</section>
 							<?php
-
+// DEMO MODE END
 						endif; ?>
 						</div>  <!-- .3u -->
 
@@ -151,7 +150,8 @@ if ($wp04_demo_mode){
 						<?php if ( is_active_sidebar( 'footer-3' ) ) : 
 							dynamic_sidebar( 'footer-3' ); 
 
-						elseif ($wp04_demo_mode) : 
+// DEMO MODE BEGIN
+						elseif (trim(strtolower($wp04_demo_mode)) != "false") :
 							?>
 
 							<section id="custom_html-5" class="widget_text widget widget_custom_html">
@@ -164,6 +164,7 @@ if ($wp04_demo_mode){
 								</div>
 							</section>
 							<?php
+// DEMO MODE END
 						endif; ?>
 							<!-- Contact -->
 								<section>
