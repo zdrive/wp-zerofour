@@ -38,7 +38,7 @@ function wp04_theme_options_add_page() {
  * @since WP-ZeroFour 1.0
  */
 function wp04_admin_tabs( $current = 'general' ) {
-	$tabs = array( 'general' => 'General',  'homepage' => 'Home Settings', 'media' => 'Media Section', 'contact' => 'Contact' );
+	$tabs = array( 'general' => 'General',  'homepage' => 'Home Settings', 'media' => 'Media Section', '404page' => '404 Page', 'contact' => 'Contact' );
 	echo '<div id="icon-themes" class="icon32"><br></div>';
 	echo '<h2 class="nav-tab-wrapper">';
 	foreach( $tabs as $tab => $name ){
@@ -72,6 +72,7 @@ function wp04_theme_options_do_page() {
 	$dispGeneral = "none";
 	$dispHomePage = "none";
 	$dispMediaSection = "none";
+	$disp404Section = "none";
 	$dispContact = "none";
 	
 	if ( isset ( $_GET['tab'] ) ) 
@@ -89,6 +90,9 @@ function wp04_theme_options_do_page() {
 		case 'media' : 
 			$dispMediaSection = "block";
 			break; 
+		case '404page' : 
+			$disp404Section = "block";
+			break; 
 		case 'contact' : 
 			$dispContact = "block";
 			break; 
@@ -96,7 +100,7 @@ function wp04_theme_options_do_page() {
 
 $DemoMode = $options[demo_mode];
 $DemoModeCheckedTrue = $DemoModeCheckedFalse = "";
-if ($DemoMode == ""){$DemoMode = "true";}
+if ($DemoMode != "false"){$DemoMode = "true";}
 if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeCheckedFalse = " checked";}
 
 	?>
@@ -111,14 +115,6 @@ if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeChec
 							<label class="description" for="wp04_theme_options[demo_mode]-true">True&nbsp;</label><input type="radio"<?php echo $DemoModeCheckedTrue; ?> id="wp04_theme_options[demo_mode]-true" name="wp04_theme_options[demo_mode]" value="true" />
 							&nbsp;&nbsp;<label class="description" for="wp04_theme_options[demo_mode]-false">False&nbsp;</label><input type="radio"<?php echo $DemoModeCheckedFalse; ?> id="wp04_theme_options[demo_mode]-false" name="wp04_theme_options[demo_mode]" value="false" />
 							<span class="description"><?php _e('Demo Mode fills your site with sample content, and tells you how to update it.', 'wpzerofour' ); ?></span>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[header_img]"><?php _e( 'Header Background Image', 'wpzerofour' ); ?></label></th>
-						<td>
-							<input id="wp04_theme_options[header_img]" class="regular-text" type="text" name="wp04_theme_options[header_img]" value="<?php echo esc_url( $options['header_img'] ); ?>" /> 
-							<input id="upload_header_img_button" type="button" class="button" value="<?php _e( 'Upload Image', 'wpzerofour' ); ?>" />
-							<span class="description"><?php _e('Ideal size is 1400x651.', 'wpzerofour' ); ?></span>
 						</td>
 					</tr>
 				</tbody>
@@ -241,9 +237,24 @@ if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeChec
 							<span class="description"><?php _e('Ideal size is about 250x50 px.', 'wpzerofour' ); ?></span>
 						</td>
 					</tr>
+					<tr>
+						<th scope="row"><label class="description" for="wp04_theme_options[header_img]"><?php _e( 'Header Background Image', 'wpzerofour' ); ?></label></th>
+						<td>
+							<input id="wp04_theme_options[header_img]" class="regular-text" type="text" name="wp04_theme_options[header_img]" value="<?php echo esc_url( $options['header_img'] ); ?>" /> 
+							<input id="upload_header_img_button" type="button" class="button" value="<?php _e( 'Upload Image', 'wpzerofour' ); ?>" />
+							<span class="description"><?php _e('Ideal size is 1400x651.', 'wpzerofour' ); ?></span>
+						</td>
+					</tr>
 				</tbody>
 			</table>
-
+		</div>  <!-- END div id = "dispMediaSection" -->	
+<?php
+	$Builtin404Image = $options[error404_use_PBimage];
+	$Builtin404ImageCheckedTrue = $Builtin404ImageCheckedFalse = "";
+	if ($Builtin404Image != "false"){$Builtin404Image = "true";}
+	if ($Builtin404Image == "true"){$Builtin404ImageCheckedTrue = " checked";} else {$Builtin404ImageCheckedFalse = " checked";}
+?>
+		<div id = "disp404Section"  style="display: <?= $disp404Section;?>">	
 			<h3 class="title"><?php _e( 'Error 404 Page (404.php) Options', 'wpzerofour' ); ?></h3>
 
 			<table class="form-table">
@@ -253,13 +264,21 @@ if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeChec
 						<td><input id="wp04_theme_options[error404_heading]" class="regular-text" type="text" name="wp04_theme_options[error404_heading]" value="<?php esc_attr_e( $options['error404_heading'] ); ?>" placeholder="(e.g., Page Not Found)" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[error404_heading]"><?php _e( 'Error 404 Subheading', 'wpzerofour' ); ?></label></th>
+						<th scope="row"><label class="description" for="wp04_theme_options[error404_subheading]"><?php _e( 'Error 404 Subheading', 'wpzerofour' ); ?></label></th>
 						<td><input id="wp04_theme_options[error404_subheading]" class="regular-text" type="text" name="wp04_theme_options[error404_subheading]" value="<?php esc_attr_e( $options['error404_subheading'] ); ?>" placeholder="(e.g., Error 404)" /></td>
+					</tr>
+					<tr>
+						<th scope="row"><?php _e( 'Use Built-in Image', 'wpzerofour' ); ?></th>
+						<td>
+							<label class="description" for="wp04_theme_options[error404_use_PBimage]-true">True&nbsp;</label><input type="radio"<?php echo $Builtin404ImageCheckedTrue; ?> id="wp04_theme_options[error404_use_PBimage]-true" name="wp04_theme_options[error404_use_PBimage]" value="true" />
+							&nbsp;&nbsp;<label class="description" for="wp04_theme_options[error404_use_PBimage]-false">False&nbsp;</label><input type="radio"<?php echo $Builtin404ImageCheckedFalse; ?> id="wp04_theme_options[error404_use_PBimage]-false" name="wp04_theme_options[error404_use_PBimage]" value="false" />
+							<span class="description"><?php _e('Uses a built-in image for the 404 page, even when Demo Mode is turned off.', 'wpzerofour' ); ?></span>
+						</td>
 					</tr>
 					<tr>
 						<th scope="row"><label class="description" for="wp04_theme_options[error404_image]"><?php _e( 'Error 404 Page Image', 'wpzerofour' ); ?></label></th>
 						<td>
-							<input id="wp04_theme_options[error404_image]" class="regular-text" type="text" name="wp04_theme_options[error404_image]" value="<?php echo esc_url( $options['error404_image'] ); ?>" placeholder="(Leave blank to use the built-in image)" /> 
+							<input id="wp04_theme_options[error404_image]" class="regular-text" type="text" name="wp04_theme_options[error404_image]" value="<?php echo esc_url( $options['error404_image'] ); ?>" placeholder="(This setting overrides the built-in image)" /> 
 							<input id="upload_site_error404_img_button" type="button" class="button" value="<?php _e( 'Upload Logo', 'wpzerofour' ); ?>" />
 							<span class="description"><?php _e('Ideal size is about 1200 px wide', 'wpzerofour' ); ?></span>
 						</td>
@@ -271,9 +290,7 @@ if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeChec
 
 				</tbody>
 			</table>
-
-
-		</div>  <!-- END div id = "dispMediaSection" -->	
+		</div>  <!-- END div id = "disp404Section" -->	
 
 		<style> .regular-text32{width: 99%;} </style> <!-- Gotta Do What You Gotta Do -->
 

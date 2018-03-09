@@ -13,10 +13,11 @@
 	$error404_content = $wp04_theme_options[ 'error404_content' ];
 
 // DEMO MODE BEGIN
-// $wp04_theme_options = get_option( 'wp04_theme_options' );
-// $wp04_demo_mode = $wp04_theme_options['demo_mode'];
+$wp04_theme_options = get_option( 'wp04_theme_options' );
+$wp04_demo_mode = $wp04_theme_options['demo_mode'];
+$error404_use_PBimage = $wp04_theme_options['error404_use_PBimage'];
 
-$wp04_demo_mode = "true"; // Hard-coding Demo Mode here so there will always be some sort of 404 content.
+// $wp04_demo_mode = "true"; // Hard-coding Demo Mode here so there will always be some sort of 404 content.
 
 if (trim(strtolower($wp04_demo_mode)) != "false"){
 	if (trim($error404_image) == ""){$error404_image = get_template_directory_uri() . "/images/stock/404-error-warning-sign_1200x600.jpg";}
@@ -25,6 +26,10 @@ if (trim(strtolower($wp04_demo_mode)) != "false"){
 	if (trim($error404_content) == ""){$error404_content = '<p style="text-align:center;">Error 404 &mdash; Page Not Found</p>';}
 } // END if ($wp04_demo_mode)
 // DEMO MODE END
+
+if (trim(strtolower($error404_use_PBimage)) != "false"){
+	if (trim($error404_image) == ""){$error404_image = get_template_directory_uri() . "/images/stock/404-error-warning-sign_1200x600.jpg";}
+} // END if (trim(strtolower($error404_use_PBimage)) != "false")
 
 get_header(); ?>
 				<div class="main-wrapper-style2">
@@ -35,7 +40,7 @@ get_header(); ?>
 									<div id="content" style="text-align:center;">
 										<header class="page-header">
 											<h2><?php echo $error404_heading; ?></h2>
-											<p style="text-align:center; width: 100%; margin: auto;"><span class="image featured"><img src="<?php echo $error404_image; ?>" alt="<?php echo $error404_heading; ?> <?php echo $error404_subheading; ?>" /></span>
+											<p style="text-align:center; width: 100%; margin: auto;"><?php if (trim($error404_image) != ""){ ?><span class="image featured"><img src="<?php echo $error404_image; ?>" alt="<?php echo $error404_heading; ?> <?php echo $error404_subheading; ?>" /></span><?php } // END if (trim($error404_image) != "") ?>
 											<h3><?php echo $error404_subheading; ?></h3></p>
 											<?php echo $error404_content; ?>
 										</header>
