@@ -6,25 +6,81 @@ The initial conversion from HTML5 to WordPress was performed in 2014 by [thequic
 
 There is a working demo here: http://www.west-la.info/
 
-## THIS DOCUMENT IS UNFINISHED, RELEASED AS A ROUGH DRAFT (2018-03-05)
+## THIS DOCUMENT IS UNFINISHED, RELEASED AS A ROUGH DRAFT (2018-03-09)
 
 ## Requirements and Resources
 1. Working WordPress installation
 2. The files from this repository
 3. Plugin: "WP Mobile Menu" by Takanakui 
 
-## Installation and Setup
-* Copy theme files
-* Select the theme
+## Demo Mode
+* When enabled, populates the Home Page with sample content
+* If content already exists, it will be used
+* If content is missing, Demo Mode will use sample content
+* Look at the sample content for tips on how to replace it
+* Demo Mode is ON by default
+* WP-ZeroFour Options... General... Layout Options
+
+## Quick Guide Installation and Setup
+* Install theme files
+* Activate the theme
 * WP Admin... Appearance... Menus (must be named "Top Nav")
 * Mobile Menu: see "wp-zerofour-mobile-menu-options.md"
 * WP Admin... Appearance... WP-ZeroFour Options
 
-## Demo Mode
-* When enabled, populates the site with sample content
-* If content is missing, Demo Mode will use sample content
-* Demo Mode is ON by default
-* WP-ZeroFour Options... General... Layout Options
+## Installation and Setup
+
+A. Initial Installation
+1. Download the theme ZIP file from the project's main page
+2. In WP Admin, go to Appearance... Themes... Add New
+3. Click the "Upload Theme" button
+4. Choose the ZIP file and then click "Install Now"
+5. After theme is installed, click the "Activate" link
+
+B. Site Setup
+1. In WP Admin, go to Appearance... Menus
+2. Enter this Menu Name: Top Nav
+3. Click Create Menu
+4. Drag items into your menu. After you make some pages you can come back and add them to the menu as desired. The main thing to remember is that the menu needs to be called "Top Nav"
+5. In WP Admin, go to Appearance... WP-ZeroFour Options
+6. Make changes to tabs: General, Home Settings, Media Section, 404 Page and Contact
+7. Click the "Save Options" button to complete the changes.
+
+C. Headings on the Home Page
+The Headings section is comprised of three images with headings, subtitles and icons. There is some text below. Currently this section is hard-coded into home.php
+1. Open home.php with a text editor
+2. Edit the HTML:
+Subtitle
+2a. Photos: Edit references to pic01.jpg, pic02.jpg and pic03.jpg
+2b. Headings: Edit text in H3 elements
+2c. Subtitles: Edit text in "span class=byline" elements
+2d. Icons: Edit references to fa-user, fa-cog and fa-bar-chart-o
+2d1. Icon reference: https://fontawesome.com/v4.7.0/cheatsheet/
+2e. Wording at bottom: Edit text in paragraph near the bottom
+NOTE: The "major_heading" and "major_subheading" are controlled in the WP-ZeroFour Options section. Do not edit this part.
+
+D. Subheadings on the Home Page
+There are two subheadings, accompanied by text and butons. These two items are made from pages of your site.
+1. In WP Admin, go to Pages... Add New (or select existing page)
+2. Fill in the title and content
+3. Look for the WP-ZeroFour Options panel on the right
+4. Check the box: "Show on Homepage"
+5. Fill out the Subheading and other fields for the button
+6. Home Position: 1 = left side; 2 = right side
+7. Publish or Update the page
+
+E. Recent Posts (appears on all pages)
+
+F. Spotlight (appears on all pages)
+
+G. Footer Sidebars (appears on all pages)
+
+H. Contact Area (appears on all pages)
+
+I. Adding More Pages
+
+J. Mobile Menu Setup
+ 
 
 ## Credits and Acknowledgements
 
@@ -52,16 +108,8 @@ The original template design was released on HTML5 UP as a free download. The au
 * skelJS (skeljs.org)
 
 ---
-## Original ZeroFour Readme Info
+## Original ZeroFour License Info
 
 ZeroFour 2.5 by HTML5 UP
-html5up.net | [@n33co](https://twitter.com/n33co)
-Free for personal and commercial use under the CCA 3.0 license [html5up.net/license](http://html5up.net/license)
-
-A responsive blog/magazine site template design named as such because it's the fourth design up here (very creative I know). Has plenty of room for all sorts of content and even multilevel drop down menus.
-
-Feedback, bug reports, and comments are not only welcome, but strongly encouraged :)
-
-AJ
-n33.co [@n33co](https://twitter.com/n33co) [dribbble.com/n33](http://dribbble.com/n33)
-
+Free for personal and commercial use under the CCA 3.0 license Web: [html5up.net/zerofour](http://html5up.net/zerofour)
+License: [html5up.net/license](http://html5up.net/license)
