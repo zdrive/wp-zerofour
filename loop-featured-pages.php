@@ -11,13 +11,26 @@
 
 global $post;
 
-$args = array(
-	'meta_key'    => '_home_button_show',
-	'meta_value'  => 'true',
-	'numberposts' => 2,
-	'orderby'     => 'meta_value_num',
-	'post_type'   => 'page'
-);
+// $args = array(
+// 	'meta_key'    => '_home_button_show',
+// 	'meta_value'  => 'true',
+// 	'numberposts' => 2,
+// 	'orderby'     => 'meta_value_num',
+// 	'post_type'   => 'page'
+// );
+
+$args =  array(  'post_type' => 'page',
+            'order'     => 'ASC',
+            'meta_key' => '_home_button_pos',
+            'orderby'   => 'meta_value_num', 
+			'numberposts' => 2,
+            'meta_query' => array(
+                                array('key' => '_home_button_show',
+                                      'value' => 'true'
+                                )
+                            )
+    		);
+
 $featured_pages = get_posts( $args );
 ?>
 <div class="main-wrapper-style2">
