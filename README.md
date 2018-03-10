@@ -2,7 +2,7 @@
 
 WP-ZeroFour is a WordPress adaptation of of the responsive HTML template ZeroFour (v2.5) originally by @n33co (CC3.0 by; [html5up.net](http://html5up.net/)).
 
-The initial conversion from HTML5 to WordPress was performed in 2014 by [thequicksilver](https://github.com/thequicksilver/). I forked the project to take on an easy task for my first GitHub project repository. This implentation includes bug fixes and enhancements.
+The initial conversion from HTML5 to WordPress was performed in 2014 by [thequicksilver](https://github.com/thequicksilver/). I forked the project to take on an easy task for my first GitHub project repository. This implementation includes bug fixes and enhancements.
 
 There is a working demo here: http://www.west-la.info/
 
