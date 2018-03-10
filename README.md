@@ -16,7 +16,7 @@ There is a working demo here: http://www.west-la.info/
 ## Demo Mode
 * When enabled, populates the Home Page with sample content
 * If content already exists, it will be used
-* If content is missing, Demo Mode will use sample content
+* If content is missing, Demo Mode will supply sample content
 * Look at the sample content for tips on how to replace it
 * Demo Mode is ON by default
 * WP-ZeroFour Options... General... Layout Options
@@ -24,11 +24,11 @@ There is a working demo here: http://www.west-la.info/
 ## Quick Guide Installation and Setup
 * Install theme files
 * Activate the theme
-* WP Admin... Appearance... Menus (must be named "Top Nav")
-* Mobile Menu: see "wp-zerofour-mobile-menu-options.md"
+* WP Admin... Appearance... Menus... Create Menu named "Top Nav"
 * WP Admin... Appearance... WP-ZeroFour Options
+* Mobile Menu: see "wp-zerofour-mobile-menu-options.md"
 
-## Installation and Setup
+## Detailed Installation and Setup
 
 A. Initial Installation
 1. Download the theme ZIP file from the project's main page
@@ -40,27 +40,28 @@ A. Initial Installation
 B. Site Setup
 1. In WP Admin, go to Appearance... Menus
 2. Enter this Menu Name: Top Nav
-3. Click Create Menu
-4. Drag items into your menu. After you make some pages you can come back and add them to the menu as desired. The main thing to remember is that the menu needs to be called "Top Nav"
+3. Click the "Create Menu" button
+4. Drag items into your menu. After you make some pages you can come back and add them to the menu as desired. 
 5. In WP Admin, go to Appearance... WP-ZeroFour Options
 6. Make changes to tabs: General, Home Settings, Media Section, 404 Page and Contact
 7. Click the "Save Options" button to complete the changes.
 
 C. Headings on the Home Page
-The Headings section is comprised of three images with headings, subtitles and icons. There is some text below. Currently this section is hard-coded into home.php
+* The Headings section is comprised of three images with headings, subtitles and icons. There is some text below.
+* Currently this section is hard-coded into home.php
 1. Open home.php with a text editor
 2. Edit the HTML:
-Subtitle
-2a. Photos: Edit references to pic01.jpg, pic02.jpg and pic03.jpg
-2b. Headings: Edit text in H3 elements
-2c. Subtitles: Edit text in "span class=byline" elements
-2d. Icons: Edit references to fa-user, fa-cog and fa-bar-chart-o
-2d1. Icon reference: https://fontawesome.com/v4.7.0/cheatsheet/
-2e. Wording at bottom: Edit text in paragraph near the bottom
-NOTE: The "major_heading" and "major_subheading" are controlled in the WP-ZeroFour Options section. Do not edit this part.
+a. Photos: Edit references to pic01.jpg, pic02.jpg and pic03.jpg
+b. Headings: Edit text in H3 elements
+c. Subtitles: Edit text in "span class=byline" elements
+d. Icons: Edit references to fa-user, fa-cog and fa-bar-chart-o
+e. Icon reference: https://fontawesome.com/v4.7.0/cheatsheet/
+f. Wording at bottom: Edit text in paragraph near the bottom
+* NOTE: The "major_heading" and "major_subheading" are controlled in the WP-ZeroFour Options section. Do not edit this part.
 
 D. Subheadings on the Home Page
-There are two subheadings, accompanied by text and butons. These two items are made from pages of your site.
+* There are two subheadings, accompanied by text and butons.
+* These two items are made from pages of your site.
 1. In WP Admin, go to Pages... Add New (or select existing page)
 2. Fill in the title and content
 3. Look for the WP-ZeroFour Options panel on the right
