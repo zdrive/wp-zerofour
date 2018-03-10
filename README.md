@@ -50,7 +50,7 @@ C. Headings on the Home Page
 * The Headings section is comprised of three images with headings, subtitles and icons. There is some text below.
 * Currently this section is hard-coded into home.php
 1. Open home.php with a text editor
-2. Edit the HTML:
+2. Edit the HTML:  
 a. Photos: Edit references to pic01.jpg, pic02.jpg and pic03.jpg  
 b. Headings: Edit text in H3 elements  
 c. Subtitles: Edit text in "span class=byline" elements  
