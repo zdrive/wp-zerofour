@@ -7,11 +7,11 @@
  * @since WP-ZeroFour 1.0
  */
 ?>
- 
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="major">
 		<h2><?php the_title(); ?></h2>
-		<span class="byline"><?php _e( 'Posted by', 'wpzerofour' ); ?> <?php echo get_the_author_link(); ?> on <?php the_date(); if( has_category() ) : _e( 'in ', 'wpzerofour' ); get_the_category_list( ', ' ); endif; ?></span>
+		<span class="byline"><?php _e( 'Posted by', 'wpzerofour' ); ?> <?php echo get_the_author_link(); ?> on <?php the_date(); if( has_category() ) : _e( ' in ', 'wpzerofour' ); echo get_the_category_list( ', ', 'wpzerofour' ); endif; ?></span>
 	</header>  <!-- .major -->
 
 	<div class="entry-content">
