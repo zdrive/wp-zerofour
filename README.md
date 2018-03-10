@@ -51,12 +51,12 @@ C. Headings on the Home Page
 * Currently this section is hard-coded into home.php
 1. Open home.php with a text editor
 2. Edit the HTML:
-a. Photos: Edit references to pic01.jpg, pic02.jpg and pic03.jpg
-b. Headings: Edit text in H3 elements
-c. Subtitles: Edit text in "span class=byline" elements
-d. Icons: Edit references to fa-user, fa-cog and fa-bar-chart-o
-e. Icon reference: https://fontawesome.com/v4.7.0/cheatsheet/
-f. Wording at bottom: Edit text in paragraph near the bottom
+a. Photos: Edit references to pic01.jpg, pic02.jpg and pic03.jpg  
+b. Headings: Edit text in H3 elements  
+c. Subtitles: Edit text in "span class=byline" elements  
+d. Icons: Edit references to fa-user, fa-cog and fa-bar-chart-o  
+e. Icon reference: https://fontawesome.com/v4.7.0/cheatsheet/  
+f. Wording at bottom: Edit text in paragraph near the bottom  
 * NOTE: The "major_heading" and "major_subheading" are controlled in the WP-ZeroFour Options section. Do not edit this part.
 
 D. Subheadings on the Home Page
