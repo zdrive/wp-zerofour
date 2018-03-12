@@ -55,20 +55,24 @@ function wp04_theme_options_do_page() {
 	if ( ! isset( $_REQUEST['settings-updated'] ) )
 		$_REQUEST['settings-updated'] = false;
 
-	?>
-	<div class="wrap">
-		<?php screen_icon(); echo "<h2>" . __( 'WP-ZeroFour Theme Settings', 'wpzerofour' ) . "</h2>"; ?>
+	$savedOptions = "&nbsp;";
+	if ( false !== $_REQUEST['settings-updated'] ){ $savedOptions .= "Options saved";}
+	
+	$aryHeadingIconNames = array(
+		""=>"-None-", 
+		"fa-user"=>"User", 
+		"fa-cog"=>"Cog", 
+		"fa-bar-chart-o"=>"Chart", 
+		"fa-check-circle"=>"Checkmark", 
+		"fa-info-circle"=>"Info", 
+		"fa-play-circle-o"=>"Play Button", 
+		"fa-plus-square"=>"Plus Sign", 
+		"fa-minus-square"=>"Minus Sign", 
+		"fa-question-circle"=>"Question Mark", 
+		"fa-exclamation-triangle"=>"Exclamation", 
+		"custom"=>"Custom Field"
+	);
 
-		<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
-		<div class="updated fade"><p><strong><?php _e( 'Options saved', 'wpzerofour' ); ?></strong></p></div>
-		<?php endif; ?>
-
-		<?php if ( isset ( $_GET['tab'] ) ) wp04_admin_tabs($_GET['tab']); else wp04_admin_tabs('general'); ?>
-
-		<form method="post" action="options.php" enctype="multipart/form-data">
-			<?php settings_fields( 'wp04_options' ); ?>
-			<?php $options = get_option( 'wp04_theme_options' ); ?>
-	<?php 
 	$dispGeneral = "none";
 	$dispHomePage = "none";
 	$dispMediaSection = "none";
@@ -98,12 +102,27 @@ function wp04_theme_options_do_page() {
 			break; 
 	endswitch; 
 
-$DemoMode = $options[demo_mode];
-$DemoModeCheckedTrue = $DemoModeCheckedFalse = "";
-if ($DemoMode != "false"){$DemoMode = "true";}
-if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeCheckedFalse = " checked";}
+	$options = get_option( 'wp04_theme_options' );
+
+	$DemoMode = $options[demo_mode];
+	$DemoModeCheckedTrue = $DemoModeCheckedFalse = "";
+	if ($DemoMode != "false"){$DemoMode = "true";}
+	if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeCheckedFalse = " checked";}
 
 	?>
+	<div class="wrap">
+		<?php 
+			screen_icon(); 
+			echo "<h2>" . __( 'WP-ZeroFour Theme Settings', 'wpzerofour' ) 
+			. "<span class='updated fade'><strong>" 
+			. _e( $savedOptions, 'wpzerofour' ) . "</strong></span></h2>"; 
+
+		 	wp04_admin_tabs($tab) 
+		 ?>
+
+		<form method="post" action="options.php" enctype="multipart/form-data">
+			<?php settings_fields( 'wp04_options' ); ?>
+
 		<div id = "dispGeneral"  style="display: <?= $dispGeneral;?>">	
 			<h3 class="title"><?php _e( 'Layout Options', 'wpzerofour' ); ?></h3>
 
@@ -138,7 +157,7 @@ if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeChec
 			<script>
 			jQuery(document).ready(function($) {
 				$('#upload_header_img_button').click(function() {
-					tb_show('Upload a header image', 'media-upload.php?TB_iframe=true', false);
+					tb_show('Upload a Header Image', 'media-upload.php?TB_iframe=true', false);
 
 					window.send_to_editor = function(html) {
 						var image_url = $('img',html).attr('src');
@@ -148,6 +167,17 @@ if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeChec
 
 					return false;
 				});
+				// $('#upload_site_logo_img_button').click(function() {
+				// 	tb_show('Upload a Logo Image', 'media-upload.php?TB_iframe=true', false);
+
+				// 	window.send_to_editor = function(html) {
+				// 		var image_url = $('img',html).attr('src');
+				// 		$('#upload_site_logo_img_button').prev('input').val(image_url);
+				// 		tb_remove();
+				// 	}
+
+				// 	return false;
+				// });
 			});
 			</script>
 		</div>  <!-- END div id = "dispGeneral" -->	
@@ -177,23 +207,7 @@ if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeChec
 						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_link]"><?php _e( 'Button Link', 'wpzerofour' ); ?></label></th>
 						<td><input id="wp04_theme_options[centerpiece_button_link]" class="regular-text" type="text" name="wp04_theme_options[centerpiece_button_link]" value="<?php echo esc_url( $options['centerpiece_button_link'] ); ?>" /></td>
 					</tr>
-					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_icon]"><?php echo _e( 'Button Icon', 'wpzerofour' ); ?></label></th>
-						<td>
-							<select id="wp04_theme_options[centerpiece_button_icon]" name="wp04_theme_options[centerpiece_button_icon]">
-								<option value="">-<?php echo _e( 'None', 'wpzerofour' ); ?>-</option>
 
-								<option value="check"<?php if( $options['centerpiece_button_icon'] == 'check' ) : ?> selected<?php endif; ?>>Checkmark</option>
-								<option value="info"<?php if( $options['centerpiece_button_icon'] == 'info' ) : ?> selected<?php endif; ?>>Info</option>
-								<option value="play"<?php if( $options['centerpiece_button_icon'] == 'play' ) : ?> selected<?php endif; ?>>Play Button</option>
-								<option value="plus"<?php if( $options['centerpiece_button_icon'] == 'plus' ) : ?> selected<?php endif; ?>>Plus Sign</option>
-								<option value="minus"<?php if( $options['centerpiece_button_icon'] == 'minus' ) : ?> selected<?php endif; ?>>Minus Sign</option>
-								<option value="user"<?php if( $options['centerpiece_button_icon'] == 'times' ) : ?> selected<?php endif; ?>>Times Sign</option>
-								<option value="question"<?php if( $options['centerpiece_button_icon'] == 'question' ) : ?> selected<?php endif; ?>>Question Mark</option>
-								<option value="exclamation"<?php if( $options['centerpiece_button_icon'] == 'exclamation' ) : ?> selected<?php endif; ?>>Exclamation</option>
-							</select>
-						</td>
-					</tr>
 					<tr>
 						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_type]"><?php echo _e( 'Button Type', 'wpzerofour' ); ?></label></th>
 						<td>
@@ -201,12 +215,32 @@ if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeChec
 								<option value="primary"<?php if( $options['centerpiece_button_type'] == 'primary' ) : ?> selected<?php endif; ?>>Primary</option>
 								<option value="secondary"<?php if( $options['centerpiece_button_type'] == 'secondary' ) : ?> selected<?php endif; ?>>Secondary</option>
 							</select>
+<!-- 						</td>
+					</tr>
+
+					<tr>
+						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_icon]"><?php // echo _e( 'Button Icon', 'wpzerofour' ); ?></label></th>
+						<td>
+ -->
+							<span style="padding-left: 6%; font-weight: 600;"><label class="description" for="wp04_theme_options[centerpiece_button_icon]"><?php echo _e( 'Button Icon', 'wpzerofour' ); ?></label></span>
+ 							<select id="wp04_theme_options[centerpiece_button_icon]" name="wp04_theme_options[centerpiece_button_icon]">
+								<option value="">-<?php echo _e( 'None', 'wpzerofour' ); ?>-</option>
+
+								<option value="check"<?php if( $options['centerpiece_button_icon'] == 'check' ) : ?> selected<?php endif; ?>>Checkmark</option>
+								<option value="info"<?php if( $options['centerpiece_button_icon'] == 'info' ) : ?> selected<?php endif; ?>>Info</option>
+								<option value="play"<?php if( $options['centerpiece_button_icon'] == 'play' ) : ?> selected<?php endif; ?>>Play Button</option>
+								<option value="plus"<?php if( $options['centerpiece_button_icon'] == 'plus' ) : ?> selected<?php endif; ?>>Plus Sign</option>
+								<option value="minus"<?php if( $options['centerpiece_button_icon'] == 'minus' ) : ?> selected<?php endif; ?>>Minus Sign</option>
+								<option value="times"<?php if( $options['centerpiece_button_icon'] == 'times' ) : ?> selected<?php endif; ?>>Times Sign</option>
+								<option value="question"<?php if( $options['centerpiece_button_icon'] == 'question' ) : ?> selected<?php endif; ?>>Question Mark</option>
+								<option value="exclamation"<?php if( $options['centerpiece_button_icon'] == 'exclamation' ) : ?> selected<?php endif; ?>>Exclamation</option>
+							</select>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 
-			<h3 class="title"><?php _e( 'Header Settings', 'wpzerofour' ); ?></h3>
+			<h3 class="title"><?php _e( 'Major Headings', 'wpzerofour' ); ?></h3>
 
 			<table class="form-table">
 				<tbody>
@@ -218,6 +252,109 @@ if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeChec
 						<th scope="row"><label class="description" for="wp04_theme_options[major_subheading]"><?php _e( 'Major Subheading', 'wpzerofour' ); ?></label></th>
 						<td><input id="wp04_theme_options[major_subheading]" class="regular-text" type="text" name="wp04_theme_options[major_subheading]" value="<?php esc_attr_e( $options['major_subheading'] ); ?>"  placeholder="(e.g., And this is where we talk about why we're &lt;strong>pretty awesome&lt;/strong> ...)"/></td>
 					</tr>
+				</tbody>
+			</table>
+
+			<h3 class="title"><?php _e( 'Image Heading Settings <span style="color:#C00000;">THIS SECTION IS UNDER CONSTRUCTION</span>', 'wpzerofour' ); ?></h3>
+			<p><span class="description"><?php _e('Appears near the top of the home page, and includes three images with headings and subtitles.', 'wpzerofour' ); ?></span></p>
+			<table class="form-table" style="width:auto; border: 1px #C00000 dashed;">
+				<tbody>
+<!-- Heading 1 -->
+					<tr>
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-1]"><?php _e( 'Heading Image 1', 'wpzerofour' ); ?></label></th>
+						<td>
+							<input id="wp04_theme_options[image_heading_photo-1]" class="regular-text" type="text" name="wp04_theme_options[image_heading_photo-1]" value="<?php echo esc_url( $options['image_heading_photo-1'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
+							<input id="upload_heading_image-1" type="button" class="button" value="<?php _e( 'Upload Image 1', 'wpzerofour' ); ?>" />
+						</td>
+					</tr>
+					<tr>
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_title-1]"><?php _e( 'Heading Title 1', 'wpzerofour' ); ?></label></th>
+						<td><input id="wp04_theme_options[image_heading_title-1]" class="regular-text" type="text" name="wp04_theme_options[image_heading_title-1]" value="<?php esc_attr_e( $options['image_heading_title-1'] ); ?>" placeholder="(e.g., Here's a Heading)" /></td>
+					</tr>
+					<tr>
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_subtitle-1]"><?php _e( 'Heading Subtitle 1', 'wpzerofour' ); ?></label></th>
+						<td><input id="wp04_theme_options[image_heading_subtitle-1]" class="regular-text" type="text" name="wp04_theme_options[image_heading_subtitle-1]" value="<?php esc_attr_e( $options['image_heading_subtitle-1'] ); ?>"  placeholder="(e.g., And a Subtitle)"/></td>
+					</tr>
+					<tr>
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_icon-1]"><?php echo _e( 'Heading 1 Icon', 'wpzerofour' ); ?></label></th>
+						<td>
+ 							<select id="wp04_theme_options[image_heading_icon-1]" name="wp04_theme_options[image_heading_icon-1]">
+
+<?php foreach ($aryHeadingIconNames as $optVal => $optText) { ?>
+								<option value="<?php echo $optVal; ?>"<?php if( $options['image_heading_icon-1'] == $optVal){?> selected<?php } ?>><?php echo _e( $optText, 'wpzerofour' ); ?></option>
+
+<?php } ?>
+							</select>
+							<span style="padding-left: 2%;"><label class="description" for="wp04_theme_options[image_heading_icon_custom-1]"><?php echo _e( 'Custom', 'wpzerofour' ); ?></label></span><input id="wp04_theme_options[image_heading_icon_custom-1]" class="short-text" type="text" name="wp04_theme_options[image_heading_icon_custom-1]" value="<?php esc_attr_e( $options['image_heading_icon_custom-1'] ); ?>"  placeholder="(Font Awesome icon)"/>
+							<br /><span class="description">Icon names: <a href="https://fontawesome.com/v4.7.0/cheatsheet/">https://fontawesome.com/v4.7.0/cheatsheet/</a></span>
+						</td>
+					</tr>
+
+<!-- Heading 2 -->
+					<tr style="border-top: 1px #C0C0C0 dashed">
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-2]"><?php _e( 'Heading Image 2', 'wpzerofour' ); ?></label></th>
+						<td>
+							<input id="wp04_theme_options[image_heading_photo-2]" class="regular-text" type="text" name="wp04_theme_options[image_heading_photo-2]" value="<?php echo esc_url( $options['image_heading_photo-2'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
+							<input id="upload_heading_image-2" type="button" class="button" value="<?php _e( 'Upload Image 2', 'wpzerofour' ); ?>" />
+						</td>
+					</tr>
+					<tr>
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_title-2]"><?php _e( 'Heading Title 2', 'wpzerofour' ); ?></label></th>
+						<td><input id="wp04_theme_options[image_heading_title-2]" class="regular-text" type="text" name="wp04_theme_options[image_heading_title-2]" value="<?php esc_attr_e( $options['image_heading_title-2'] ); ?>" placeholder="(e.g., Also a Heading)" /></td>
+					</tr>
+					<tr>
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_subtitle-2]"><?php _e( 'Heading Subtitle 2', 'wpzerofour' ); ?></label></th>
+						<td><input id="wp04_theme_options[image_heading_subtitle-2]" class="regular-text" type="text" name="wp04_theme_options[image_heading_subtitle-2]" value="<?php esc_attr_e( $options['image_heading_subtitle-2'] ); ?>"  placeholder="(e.g., And Another Subtitle)"/></td>
+					</tr>
+					<tr>
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_icon-2]"><?php echo _e( 'Heading 2 Icon', 'wpzerofour' ); ?></label></th>
+						<td>
+ 							<select id="wp04_theme_options[image_heading_icon-2]" name="wp04_theme_options[image_heading_icon-2]">
+
+<?php foreach ($aryHeadingIconNames as $optVal => $optText) { ?>
+								<option value="<?php echo $optVal; ?>"<?php if( $options['image_heading_icon-2'] == $optVal){?> selected<?php } ?>><?php echo _e( $optText, 'wpzerofour' ); ?></option>
+<?php } ?>
+							</select>
+							<span style="padding-left: 2%;"><label class="description" for="wp04_theme_options[image_heading_icon_custom-2]"><?php echo _e( 'Custom', 'wpzerofour' ); ?></label></span><input id="wp04_theme_options[image_heading_icon_custom-2]" class="short-text" type="text" name="wp04_theme_options[image_heading_icon_custom-2]" value="<?php esc_attr_e( $options['image_heading_icon_custom-2'] ); ?>"  placeholder="(Font Awesome icon)"/>
+							<br /><span class="description">Icon names: <a href="https://fontawesome.com/v4.7.0/cheatsheet/">https://fontawesome.com/v4.7.0/cheatsheet/</a></span>
+						</td>
+					</tr>
+
+<!-- Heading 3 -->
+					<tr style="border-top: 1px #C0C0C0 dashed">
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-3]"><?php _e( 'Heading Image 3', 'wpzerofour' ); ?></label></th>
+						<td>
+							<input id="wp04_theme_options[image_heading_photo-3]" class="regular-text" type="text" name="wp04_theme_options[image_heading_photo-3]" value="<?php echo esc_url( $options['image_heading_photo-3'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
+							<input id="upload_heading_image-3" type="button" class="button" value="<?php _e( 'Upload Image 3', 'wpzerofour' ); ?>" />
+						</td>
+					</tr>
+					<tr>
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_title-3]"><?php _e( 'Heading Title 3', 'wpzerofour' ); ?></label></th>
+						<td><input id="wp04_theme_options[image_heading_title-3]" class="regular-text" type="text" name="wp04_theme_options[image_heading_title-3]" value="<?php esc_attr_e( $options['image_heading_title-3'] ); ?>" placeholder="(e.g., Another Heading)" /></td>
+					</tr>
+					<tr>
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_subtitle-3]"><?php _e( 'Heading Subtitle 3', 'wpzerofour' ); ?></label></th>
+						<td><input id="wp04_theme_options[image_heading_subtitle-3]" class="regular-text" type="text" name="wp04_theme_options[image_heading_subtitle-3]" value="<?php esc_attr_e( $options['image_heading_subtitle-3'] ); ?>"  placeholder="(e.g., And Yes, a Subtitle)"/></td>
+					</tr>
+					<tr>
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_icon-3]"><?php echo _e( 'Heading 1 Icon', 'wpzerofour' ); ?></label></th>
+						<td>
+ 							<select id="wp04_theme_options[image_heading_icon-3]" name="wp04_theme_options[image_heading_icon-3]">
+
+<?php foreach ($aryHeadingIconNames as $optVal => $optText) { ?>
+								<option value="<?php echo $optVal; ?>"<?php if( $options['image_heading_icon-3'] == $optVal){?> selected<?php } ?>><?php echo _e( $optText, 'wpzerofour' ); ?></option>
+<?php } ?>
+							</select>
+							<span style="padding-left: 2%;"><label class="description" for="wp04_theme_options[image_heading_icon_custom-3]"><?php echo _e( 'Custom', 'wpzerofour' ); ?></label></span><input id="wp04_theme_options[image_heading_icon_custom-3]" class="short-text" type="text" name="wp04_theme_options[image_heading_icon_custom-3]" value="<?php esc_attr_e( $options['image_heading_icon_custom-3'] ); ?>"  placeholder="(Font Awesome icon)"/>
+							<br /><span class="description">Icon names: <a href="https://fontawesome.com/v4.7.0/cheatsheet/">https://fontawesome.com/v4.7.0/cheatsheet/</a></span>
+						</td>
+					</tr>
+
+					<tr style="border-top: 1px #C0C0C0 dashed">
+						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_text_below]"><?php _e( 'Text Below Images', 'wpzerofour' ); ?></label></th>
+						<td><textarea id="wp04_theme_options[image_heading_text_below]" class="regular-text" cols="1" rows="8" name="wp04_theme_options[image_heading_text_below]"><?php esc_attr_e( $options['image_heading_text_below'] ); ?></textarea></td>
+					</tr>
+
 				</tbody>
 			</table>
 
@@ -272,7 +409,7 @@ if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeChec
 						<td>
 							<label class="description" for="wp04_theme_options[error404_use_PBimage]-true">True&nbsp;</label><input type="radio"<?php echo $Builtin404ImageCheckedTrue; ?> id="wp04_theme_options[error404_use_PBimage]-true" name="wp04_theme_options[error404_use_PBimage]" value="true" />
 							&nbsp;&nbsp;<label class="description" for="wp04_theme_options[error404_use_PBimage]-false">False&nbsp;</label><input type="radio"<?php echo $Builtin404ImageCheckedFalse; ?> id="wp04_theme_options[error404_use_PBimage]-false" name="wp04_theme_options[error404_use_PBimage]" value="false" />
-							<span class="description"><?php _e('Uses a built-in image for the 404 page, even when Demo Mode is turned off.', 'wpzerofour' ); ?></span>
+							<span class="description"><?php _e('Use a built-in Error 404 image, even if Demo Mode is off. Image below overrides this setting.', 'wpzerofour' ); ?></span>
 						</td>
 					</tr>
 					<tr>
