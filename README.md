@@ -1,4 +1,4 @@
-# WP-ZeroFour
+# WP-ZeroFour v1.1
 
 WP-ZeroFour is a WordPress adaptation of of the responsive HTML template ZeroFour (v2.5) originally by @n33co (CC3.0 by; [html5up.net](http://html5up.net/)).
 
@@ -23,13 +23,12 @@ Working Demo: http://www.west-la.info/
 * Install theme files
 * Activate the theme
 * WP Admin... Appearance... Menus... Create Menu named "Top Nav"
-* WP Admin... Appearance... WP-ZeroFour Options
+* WP Admin... Appearance... WP-ZeroFour Options (set options)
 * Mobile Menu: see "wp-zerofour-mobile-menu-options.md"
 * Make two pages, "Show on Homepage" in WP-ZeroFour Options
 * Edit static text in home.php
 * Make three regular posts with featured images
 * Make a sticky post with featured image
-* Make content pages and adjust Top Nav menu
 
 ## Detailed Installation and Setup
 
@@ -43,12 +42,13 @@ Working Demo: http://www.west-la.info/
 ### B. Site Setup
 1. In WP Admin, go to Appearance... Menus
 2. Enter this Menu Name: Top Nav
-3. Click the "Create Menu" button
-4. Drag items into your menu. After you make some pages you can come back and add them to the menu as desired. 
+3. Click the "Create Menu" button  
+-- Check box: "Primary navigation along the top of the template"
+4. Drag items into your menu. After you make some pages you can come back and add them to the menu as desired
 5. In WP Admin, go to Appearance... WP-ZeroFour Options
 6. Make changes to tabs: General, Home Settings, Media Section, 404 Page and Contact
-7. Click the "Save Options" button to complete the changes.
-* Note: If you don't have all the information needed to complete WP-ZeroFour Options, Demo Mode will fill in whatever is missing.
+7. Click the "Save Options" button to complete the changes
+* Note: If you don't have all the information needed to complete WP-ZeroFour Options, Demo Mode will fill in whatever is missing
 
 ### C. Headings on the Home Page
 * The Headings section is comprised of three images with headings, subtitles and icons. There is some text below.
@@ -79,19 +79,21 @@ f. Wording at bottom: Edit text in paragraph near the bottom
 * To add content here, add a post
 1. In WP Admin, go to Posts... Add New
 2. Enter title and content
-3. Select a category and uncheck Uncategorized
+3. Select a category and uncheck "Uncategorized"
 4. Featured Image should be 1200 pixels wide  
   a. Category display = full width, 1200 pixels  
-  b. Post pgae display = 800 pixels  
-  c. Thumbnail = 180x167, autocropped  
-  d. 1200x450 works well  
+  b. Post display = 800 pixels wide  
+  c. Thumbnail display = 180x167, autocropped  
+  d. 1200x450 works well (renders as 800x300 in post)  
   e. Too small = blurry full width  
+* Note: Recent Posts and Spotlight will not appear if you select a Page template that indicates "...without Posts"
 
 ### F. Spotlight (appears on selected pages)
 * Follow the same instructions for Recent Posts, except make it a sticky post:
 1. Edit "Visibility" In the Publish box near the upper right 
 2. Check the box: "Stick this post to the front page"
 3. Image sizes are same as above, except Thumbnail = 367x168
+* Note: Recent Posts and Spotlight will not appear if you select a Page template that indicates "...without Posts"
 
 ### G. Footer Sidebars (appears on all pages)
 * The footer uses three sidebars, named Footer 1, 2 and 3
@@ -100,15 +102,15 @@ f. Wording at bottom: Edit text in paragraph near the bottom
 * Footer 1 - about 260 pixels wide, works best as a column
 * Footer 2 - about 260 pixels wide, works best as a column
 * Footer 3 - about 575 pixels wide, works best as a rectangle
-* Note: Footers 1 & 2 occupy the space left of the Contact block
-* Note: Footer 3 occupies the space above the Contact block
+* Footers 1 & 2 occupy the space left of the Contact block
+* Footer 3 occupies the space above the Contact block
 1. In WP Admin, go to Appearance... Widgets
 2. Drag a widget or Custom HTML into a Footer sidebar
 3. Complete the widget setup
 4. Click the "Save" button
 
 ### H. Contact Area (appears on all pages)
-* This section is controlled by the WP-ZeroFour Options.
+* This section is controlled by the WP-ZeroFour Options section
 
 ### I. Adding More Pages
 * To make a new page use: WP Admin... Pages... Add New
@@ -117,7 +119,7 @@ f. Wording at bottom: Edit text in paragraph near the bottom
 * Check box: "Primary navigation along the top of the template"
 
 ### J. Sidebars
-* The theme the standard sidebar
+* The theme uses the standard sidebar
 * The sidebar appears on posts and selected pages
 1. In WP Admin, go to Appearance... Widgets
 2. Drag a widget or Custom HTML into a Footer sidebar
@@ -139,8 +141,8 @@ The original template design was released on HTML5 UP as a free download. The au
 * thequicksilver: [thequicksilver/wp-zerofour](https://github.com/thequicksilver/wp-zerofour)
 
 ### Demo Images
-* Demo Images: [unsplash.com](http://unsplash.com)
-* 404 Image: [freepik.com](http://freepik.com)
+* Demo Content Images: [unsplash.com](http://unsplash.com)
+* Demo 404 Image: [freepik.com](http://freepik.com)
 * Demo Logo: [cooltext.com] (https://cooltext.com/Logo-Design-Gold-Outline)  
   -- CoolText_WP-ZeroFour_55-352x68.png (original)  
   -- WP-ZeroFour-CoolText_195x35.gif (mobile logo)  
