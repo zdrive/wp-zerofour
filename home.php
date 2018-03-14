@@ -34,8 +34,8 @@ $wp04_image_heading_title_2 = $wp04_theme_options['image_heading_title-2'];
 $wp04_image_heading_subtitle_2 = $wp04_theme_options['image_heading_subtitle-2'];
 $wp04_image_heading_icon_2 = $wp04_theme_options['image_heading_icon-2'];
 $wp04_image_heading_icon_custom_2 = $wp04_theme_options['image_heading_icon_custom-2'];
-	if(strlen($wp04_image_heading_icon_custom_1) > 2) {
-		$wp04_image_heading_icon_1 = $wp04_image_heading_icon_custom_1;
+	if(strlen($wp04_image_heading_icon_custom_2) > 2) {
+		$wp04_image_heading_icon_2 = $wp04_image_heading_icon_custom_2;
 	}
 
 $wp04_image_heading_photo_3 = $wp04_theme_options['image_heading_photo-3'];
@@ -43,8 +43,8 @@ $wp04_image_heading_title_3 = $wp04_theme_options['image_heading_title-3'];
 $wp04_image_heading_subtitle_3 = $wp04_theme_options['image_heading_subtitle-3'];
 $wp04_image_heading_icon_3 = $wp04_theme_options['image_heading_icon-3'];
 $wp04_image_heading_icon_custom_3 = $wp04_theme_options['image_heading_icon_custom-3'];
-	if(strlen($wp04_image_heading_icon_custom_1) > 2) {
-		$wp04_image_heading_icon_1 = $wp04_image_heading_icon_custom_1;
+	if(strlen($wp04_image_heading_icon_custom_3) > 2) {
+		$wp04_image_heading_icon_3 = $wp04_image_heading_icon_custom_3;
 	}
 
  $wp04_image_heading_text_below = $wp04_theme_options['image_heading_text_below'];
@@ -75,7 +75,7 @@ if (trim(strtolower($wp04_demo_mode)) != "false"){
 	if (empty($wp04_image_heading_icon_3)){$wp04_image_heading_icon_3 = " fa-bar-chart-o";}
 	if (empty($wp04_image_heading_icon_custom_3)){$wp04_image_heading_icon_custom_3 = "";}
 
-	if (empty($wp04_image_heading_text_below)){$wp04_image_heading_text_below = 'This is a demonstration of the <span style="white-space: nowrap;">WP-ZeroFour</span> WordPress template, which is based on a design by HTML5UP. You can download the template and use it for free. To get the template, just visit the project\'s main page at GitHub (see link below) and download a ZIP file that you can upload to WordPress as a theme. To change this text, update the <span style="white-space: nowrap;">WP-ZeroFour</span> Options page in WP Admin. Installation Instructions are in the ReadMe file. Download the template here: <span style="white-space: nowrap;"><a href="https://github.com/zdrive/wp-zerofour-v1_1" target="_blank">https://github.com/zdrive/wp-zerofour-v1_1</a></span>';}
+	if (empty($wp04_image_heading_text_below)){$wp04_image_heading_text_below = 'This is a demonstration of the <span style="white-space: nowrap;">WP-ZeroFour</span> WordPress template, which is based on a design by HTML5UP. To change this text, update the <span style="white-space: nowrap;">WP-ZeroFour</span> Options page in WP Admin. You can download the template and use it for free. To get the template, just visit the project\'s main page at GitHub (see link below) and download a ZIP file that you can upload to WordPress as a theme (installation instructions are in the ReadMe.md file). Download the template here: <span style="white-space: nowrap;"><a href="https://github.com/zdrive/wp-zerofour-v1_1" target="_blank">https://github.com/zdrive/wp-zerofour-v1_1</a></span>';}
 
 } // END if ($wp04_demo_mode)
 // DEMO MODE END
