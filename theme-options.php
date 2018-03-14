@@ -8,15 +8,27 @@ add_action( 'admin_menu', 'wp04_theme_options_add_page' );
  *
  * @since WP-ZeroFour 1.0
  */
+
+error_reporting(E_ALL); ini_set('display_errors', 1);
+
+require_once(ABSPATH . 'wp-admin/includes/screen.php');
+
+ $hello="start";
+// $hello=get_current_screen() -> id;
+// echo $hello." :HELLO";
+// echo "HEY: " . get_current_screen() -> id;
+
 function wp04_options_enqueue_scripts() {
-	if ( 'appearance_page_wp04_theme_options' == get_current_screen() -> id ) :
+//	if ( 'appearance_page_wp04_theme_options' == get_current_screen() -> id ) :
+		wp_enqueue_script('media-upload');
 		wp_enqueue_script('thickbox');
 		wp_enqueue_style('thickbox');
-		wp_enqueue_script('media-upload');
-	endif;
+		// wp_enqueue_script('media-upload');
+// echo "middle :HELLO";
+//	endif;
 }
 add_action( 'admin_enqueue_scripts', 'wp04_options_enqueue_scripts' );
-
+// echo $hello." :HELLO";
 
 /**
  * Init plugin options to white list our options
@@ -38,7 +50,7 @@ function wp04_theme_options_add_page() {
  * @since WP-ZeroFour 1.0
  */
 function wp04_admin_tabs( $current = 'general' ) {
-	$tabs = array( 'general' => 'General',  'homepage' => 'Home Settings', 'media' => 'Media Section', '404page' => '404 Page', 'contact' => 'Contact' );
+	$tabs = array( 'general' => 'General',  'homepage' => 'Home Settings',  'homeheadings' => 'Home Image Headings', 'media' => 'Media Section', '404page' => '404 Page', 'contact' => 'Contact' );
 	echo '<div id="icon-themes" class="icon32"><br></div>';
 	echo '<h2 class="nav-tab-wrapper">';
 	foreach( $tabs as $tab => $name ){
@@ -75,6 +87,7 @@ function wp04_theme_options_do_page() {
 
 	$dispGeneral = "none";
 	$dispHomePage = "none";
+	$dispHomeHeadingsPage = "none";
 	$dispMediaSection = "none";
 	$disp404Section = "none";
 	$dispContact = "none";
@@ -91,6 +104,9 @@ function wp04_theme_options_do_page() {
 		case 'homepage' : 
 			$dispHomePage = "block";
 			break; 
+		case 'homeheadings' : 
+			$dispHomeHeadingsPage = "block";
+			break; 
 		case 'media' : 
 			$dispMediaSection = "block";
 			break; 
@@ -104,7 +120,7 @@ function wp04_theme_options_do_page() {
 
 	$options = get_option( 'wp04_theme_options' );
 
-	$DemoMode = $options[demo_mode];
+	$DemoMode = $options['demo_mode'];
 	$DemoModeCheckedTrue = $DemoModeCheckedFalse = "";
 	if ($DemoMode != "false"){$DemoMode = "true";}
 	if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeCheckedFalse = " checked";}
@@ -157,11 +173,15 @@ function wp04_theme_options_do_page() {
 			<script>
 			jQuery(document).ready(function($) {
 				$('#upload_header_img_button').click(function() {
-					tb_show('Upload a Header Image', 'media-upload.php?TB_iframe=true', false);
+					formfield = $('#wp04_theme_options[header_img]').attr('name');
+					tb_show('Upload a Header Image', 'media-upload.php?type=image&amp;TB_iframe=true');
+					// tb_show('Upload a Header Image', 'media-upload.php?type=image&amp;TB_iframe=true', false);
+					// return false;
 
 					window.send_to_editor = function(html) {
 						var image_url = $('img',html).attr('src');
-						$('#upload_header_img_button').prev('input').val(image_url);
+						// $('#upload_header_img_button').prev('input').val(image_url);
+						$('#wp04_theme_options[header_img]').val(image_url);
 						tb_remove();
 					}
 
@@ -254,6 +274,9 @@ function wp04_theme_options_do_page() {
 					</tr>
 				</tbody>
 			</table>
+		</div>  <!-- END div id = "dispHomePage" -->	
+
+		<div id = "dispHomeHeadingsPage"  style="display: <?= $dispHomeHeadingsPage;?>">	
 
 			<h3 class="title"><?php _e( 'Image Heading Settings <span style="color:#C00000;">THIS SECTION IS UNDER CONSTRUCTION</span>', 'wpzerofour' ); ?></h3>
 			<p><span class="description"><?php _e('Appears near the top of the home page, and includes three images with headings and subtitles.', 'wpzerofour' ); ?></span></p>
@@ -263,8 +286,8 @@ function wp04_theme_options_do_page() {
 					<tr>
 						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-1]"><?php _e( 'Heading Image 1', 'wpzerofour' ); ?></label></th>
 						<td>
-							<input id="wp04_theme_options[image_heading_photo-1]" class="regular-text" type="text" name="wp04_theme_options[image_heading_photo-1]" value="<?php echo esc_url( $options['image_heading_photo-1'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
-							<input id="upload_heading_image-1" type="button" class="button" value="<?php _e( 'Upload Image 1', 'wpzerofour' ); ?>" />
+							<input id="wp04_theme_options[image_heading_photo-1]" style="width: 15em;" type="text" name="wp04_theme_options[image_heading_photo-1]" value="<?php echo esc_url( $options['image_heading_photo-1'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
+							<span class="HideMobi" style="padding-left: 4%"></span><input id="upload_heading_image-1" type="button" class="button" value="<?php _e( 'Upload Image 1', 'wpzerofour' ); ?>" />
 						</td>
 					</tr>
 					<tr>
@@ -294,8 +317,8 @@ function wp04_theme_options_do_page() {
 					<tr style="border-top: 1px #C0C0C0 dashed">
 						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-2]"><?php _e( 'Heading Image 2', 'wpzerofour' ); ?></label></th>
 						<td>
-							<input id="wp04_theme_options[image_heading_photo-2]" class="regular-text" type="text" name="wp04_theme_options[image_heading_photo-2]" value="<?php echo esc_url( $options['image_heading_photo-2'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
-							<input id="upload_heading_image-2" type="button" class="button" value="<?php _e( 'Upload Image 2', 'wpzerofour' ); ?>" />
+							<input id="wp04_theme_options[image_heading_photo-2]" style="width: 15em;" type="text" name="wp04_theme_options[image_heading_photo-2]" value="<?php echo esc_url( $options['image_heading_photo-2'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
+							<span class="HideMobi" style="padding-left: 4%"></span><input id="upload_heading_image-2" type="button" class="button" value="<?php _e( 'Upload Image 2', 'wpzerofour' ); ?>" />
 						</td>
 					</tr>
 					<tr>
@@ -324,8 +347,8 @@ function wp04_theme_options_do_page() {
 					<tr style="border-top: 1px #C0C0C0 dashed">
 						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-3]"><?php _e( 'Heading Image 3', 'wpzerofour' ); ?></label></th>
 						<td>
-							<input id="wp04_theme_options[image_heading_photo-3]" class="regular-text" type="text" name="wp04_theme_options[image_heading_photo-3]" value="<?php echo esc_url( $options['image_heading_photo-3'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
-							<input id="upload_heading_image-3" type="button" class="button" value="<?php _e( 'Upload Image 3', 'wpzerofour' ); ?>" />
+							<input id="wp04_theme_options[image_heading_photo-3]" style="width: 15em;" type="text" name="wp04_theme_options[image_heading_photo-3]" value="<?php echo esc_url( $options['image_heading_photo-3'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
+							<span class="HideMobi" style="padding-left: 4%"></span><input id="upload_heading_image-3" type="button" class="button" value="<?php _e( 'Upload Image 3', 'wpzerofour' ); ?>" />
 						</td>
 					</tr>
 					<tr>
@@ -358,7 +381,7 @@ function wp04_theme_options_do_page() {
 				</tbody>
 			</table>
 
-		</div>  <!-- END div id = "dispHomePage" -->	
+		</div>  <!-- END div id = "dispHomeHeadingsPage" -->	
 
 		<div id = "dispMediaSection"  style="display: <?= $dispMediaSection;?>">	
 
@@ -386,7 +409,7 @@ function wp04_theme_options_do_page() {
 			</table>
 		</div>  <!-- END div id = "dispMediaSection" -->	
 <?php
-	$Builtin404Image = $options[error404_use_PBimage];
+	$Builtin404Image = $options['error404_use_PBimage'];
 	$Builtin404ImageCheckedTrue = $Builtin404ImageCheckedFalse = "";
 	if ($Builtin404Image != "false"){$Builtin404Image = "true";}
 	if ($Builtin404Image == "true"){$Builtin404ImageCheckedTrue = " checked";} else {$Builtin404ImageCheckedFalse = " checked";}
@@ -493,28 +516,35 @@ function wp04_theme_options_do_page() {
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function wp04_theme_options_validate( $input ) {
-	global $select_options, $radio_options;
+//// 2018-03-13 
+//// Commented these lines of code. They  caused warnings when PHP errors are not hidden
+//// It seems this section is supposed to validate, but was not implemented
+//// It is sample code from here:
+////	https://gist.github.com/smonteverdi/2183715#file-theme-options-php
 
-	// Our checkbox value is either 0 or 1
-	if ( ! isset( $input['option1'] ) )
-		$input['option1'] = null;
-	$input['option1'] = ( $input['option1'] == 1 ? 1 : 0 );
 
-	// Say our text option must be safe text with no HTML tags
-	$input['sometext'] = wp_filter_nohtml_kses( $input['sometext'] );
+////	global $select_options, $radio_options;
 
-	// Our select option must actually be in our array of select options
-	if ( ! array_key_exists( $input['selectinput'], $select_options ) )
-		$input['selectinput'] = null;
+////	// Our checkbox value is either 0 or 1
+////	if ( ! isset( $input['option1'] ) )
+////		$input['option1'] = null;
+////	$input['option1'] = ( $input['option1'] == 1 ? 1 : 0 );
 
-	// Our radio option must actually be in our array of radio options
-	if ( ! isset( $input['radioinput'] ) )
-		$input['radioinput'] = null;
-	if ( ! array_key_exists( $input['radioinput'], $radio_options ) )
-		$input['radioinput'] = null;
+////	// Say our text option must be safe text with no HTML tags
+////	$input['sometext'] = wp_filter_nohtml_kses( $input['sometext'] );
 
-	// Say our textarea option must be safe text with the allowed tags for posts
-	$input['sometextarea'] = wp_filter_post_kses( $input['sometextarea'] );
+////	// Our select option must actually be in our array of select options
+////	if ( ! array_key_exists( $input['selectinput'], $select_options ) )
+////		$input['selectinput'] = null;
+
+////	// Our radio option must actually be in our array of radio options
+////	if ( ! isset( $input['radioinput'] ) )
+////		$input['radioinput'] = null;
+////	if ( ! array_key_exists( $input['radioinput'], $radio_options ) )
+////		$input['radioinput'] = null;
+
+////	// Say our textarea option must be safe text with the allowed tags for posts
+////	$input['sometextarea'] = wp_filter_post_kses( $input['sometextarea'] );
 
 	return $input;
 }
