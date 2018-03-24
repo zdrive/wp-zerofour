@@ -13,22 +13,14 @@ error_reporting(E_ALL); ini_set('display_errors', 1);
 
 require_once(ABSPATH . 'wp-admin/includes/screen.php');
 
- $hello="start";
-// $hello=get_current_screen() -> id;
-// echo $hello." :HELLO";
-// echo "HEY: " . get_current_screen() -> id;
-
 function wp04_options_enqueue_scripts() {
 //	if ( 'appearance_page_wp04_theme_options' == get_current_screen() -> id ) :
 		wp_enqueue_script('media-upload');
 		wp_enqueue_script('thickbox');
 		wp_enqueue_style('thickbox');
-		// wp_enqueue_script('media-upload');
-// echo "middle :HELLO";
 //	endif;
 }
 add_action( 'admin_enqueue_scripts', 'wp04_options_enqueue_scripts' );
-// echo $hello." :HELLO";
 
 /**
  * Init plugin options to white list our options
@@ -170,36 +162,6 @@ function wp04_theme_options_do_page() {
 				</tbody>
 			</table>
 
-			<script>
-			jQuery(document).ready(function($) {
-				$('#upload_header_img_button').click(function() {
-					formfield = $('#wp04_theme_options[header_img]').attr('name');
-					tb_show('Upload a Header Image', 'media-upload.php?type=image&amp;TB_iframe=true');
-					// tb_show('Upload a Header Image', 'media-upload.php?type=image&amp;TB_iframe=true', false);
-					// return false;
-
-					window.send_to_editor = function(html) {
-						var image_url = $('img',html).attr('src');
-						// $('#upload_header_img_button').prev('input').val(image_url);
-						$('#wp04_theme_options[header_img]').val(image_url);
-						tb_remove();
-					}
-
-					return false;
-				});
-				// $('#upload_site_logo_img_button').click(function() {
-				// 	tb_show('Upload a Logo Image', 'media-upload.php?TB_iframe=true', false);
-
-				// 	window.send_to_editor = function(html) {
-				// 		var image_url = $('img',html).attr('src');
-				// 		$('#upload_site_logo_img_button').prev('input').val(image_url);
-				// 		tb_remove();
-				// 	}
-
-				// 	return false;
-				// });
-			});
-			</script>
 		</div>  <!-- END div id = "dispGeneral" -->	
 
 		<div id = "dispHomePage"  style="display: <?= $dispHomePage;?>">	
@@ -278,16 +240,16 @@ function wp04_theme_options_do_page() {
 
 		<div id = "dispHomeHeadingsPage"  style="display: <?= $dispHomeHeadingsPage;?>">	
 
-			<h3 class="title"><?php _e( 'Image Heading Settings <span style="color:#C00000;">THIS SECTION IS UNDER CONSTRUCTION</span>', 'wpzerofour' ); ?></h3>
+			<h3 class="title"><?php _e( 'Image Heading Settings', 'wpzerofour' ); ?></h3>
 			<p><span class="description"><?php _e('Appears near the top of the home page, and includes three images with headings and subtitles.', 'wpzerofour' ); ?></span></p>
-			<table class="form-table" style="width:auto; border: 1px #C00000 dashed;">
+			<table class="form-table" style="width:auto;">
 				<tbody>
 <!-- Heading 1 -->
 					<tr>
 						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-1]"><?php _e( 'Heading Image 1', 'wpzerofour' ); ?></label></th>
 						<td>
 							<input id="wp04_theme_options[image_heading_photo-1]" style="width: 15em;" type="text" name="wp04_theme_options[image_heading_photo-1]" value="<?php echo esc_url( $options['image_heading_photo-1'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
-							<span class="HideMobi" style="padding-left: 4%"></span><input id="upload_heading_image-1" type="button" class="button" value="<?php _e( 'Upload Image 1', 'wpzerofour' ); ?>" />
+							<span class="HideMobi" style="padding-left: 4%"></span><input id="upload_heading_image-1" type="button" class="button upload_image_button" value="<?php _e( 'Upload Image 1', 'wpzerofour' ); ?>" />
 						</td>
 					</tr>
 					<tr>
@@ -314,7 +276,8 @@ function wp04_theme_options_do_page() {
 					</tr>
 
 <!-- Heading 2 -->
-					<tr style="border-top: 1px #C0C0C0 dashed">
+					<tr><td colspan="2"><hr></td></tr>
+					<tr>
 						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-2]"><?php _e( 'Heading Image 2', 'wpzerofour' ); ?></label></th>
 						<td>
 							<input id="wp04_theme_options[image_heading_photo-2]" style="width: 15em;" type="text" name="wp04_theme_options[image_heading_photo-2]" value="<?php echo esc_url( $options['image_heading_photo-2'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
@@ -344,8 +307,9 @@ function wp04_theme_options_do_page() {
 					</tr>
 
 <!-- Heading 3 -->
-					<tr style="border-top: 1px #C0C0C0 dashed">
-						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-3]"><?php _e( 'Heading Image 3', 'wpzerofour' ); ?></label></th>
+					<tr><td colspan="2"><hr></td></tr>
+					<tr>
+						<th style="padding-left: 1%;" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-3]"><?php _e( 'Heading Image 3', 'wpzerofour' ); ?></label></th>
 						<td>
 							<input id="wp04_theme_options[image_heading_photo-3]" style="width: 15em;" type="text" name="wp04_theme_options[image_heading_photo-3]" value="<?php echo esc_url( $options['image_heading_photo-3'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
 							<span class="HideMobi" style="padding-left: 4%"></span><input id="upload_heading_image-3" type="button" class="button" value="<?php _e( 'Upload Image 3', 'wpzerofour' ); ?>" />
@@ -373,7 +337,8 @@ function wp04_theme_options_do_page() {
 						</td>
 					</tr>
 
-					<tr style="border-top: 1px #C0C0C0 dashed">
+					<tr><td colspan="2"><hr></td></tr>
+					<tr>
 						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_text_below]"><?php _e( 'Text Below Images', 'wpzerofour' ); ?></label></th>
 						<td><textarea id="wp04_theme_options[image_heading_text_below]" class="regular-text" cols="1" rows="8" name="wp04_theme_options[image_heading_text_below]"><?php esc_attr_e( $options['image_heading_text_below'] ); ?></textarea></td>
 					</tr>

@@ -24,7 +24,7 @@
  * @subpackage WP-ZeroFour
  * @since WP-ZeroFour 1.0
  */
-  
+
 /**
  * Register three WP-ZeroFour widget areas.
  *
@@ -100,3 +100,20 @@ require_once ( get_stylesheet_directory() . '/theme-options.php' );
  * @since WP-ZeroFour 1.0
  */
 require_once ( get_stylesheet_directory() . '/page-options.php' );
+
+
+/**
+ * Upload images in WP-ZeroFour options.
+ *
+ * @since WP-ZeroFour 1.1
+ * thanks to: https://www.webfulcreations.com/using-wordpress-media-uploader-in-admin-theme-options/ 
+ */
+add_action('admin_enqueue_scripts', 'uploader_javaScript');
+ 
+function uploader_javaScript() {
+//    if (isset($_GET['page']) && $_GET['page'] == 'theme-options.php') {
+        wp_enqueue_media();
+        wp_register_script('theme_options', get_bloginfo('template_directory').'/js/upload-button.js', array('jquery'));
+        wp_enqueue_script('theme_options');
+//    }
+}
