@@ -24,7 +24,7 @@ Working Demo: http://www.west-la.info/
 * Activate the theme
 * WP Admin... Appearance... Menus... Create Menu named "Top Nav"
 * WP Admin... Appearance... WP-ZeroFour Options (set options)
-* Mobile Menu: see "wp-zerofour-mobile-menu-options.md"
+* Mobile Menu: see [wp-zerofour-mobile-menu-options.md](wp-zerofour-mobile-menu-options.md)
 * Make two pages, "Show on Homepage" in WP-ZeroFour Options
 * Make three regular posts with featured images
 * Make a sticky post with featured image
