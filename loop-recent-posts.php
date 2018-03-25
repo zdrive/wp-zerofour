@@ -7,9 +7,6 @@
  * @since WP-ZeroFour 1.0
  */
 
-// error_reporting(E_ALL); ini_set('display_errors', 1);
-
-
 // DEMO MODE BEGIN
 $wp04_theme_options = get_option( 'wp04_theme_options' );
 $wp04_demo_mode = $wp04_theme_options['demo_mode'];

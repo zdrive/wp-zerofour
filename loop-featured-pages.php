@@ -7,8 +7,6 @@
  * @since WP-ZeroFour 1.0
  */
 
-// error_reporting(E_ALL); ini_set('display_errors', 1);
-
 global $post;
 
 // $args = array(

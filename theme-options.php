@@ -9,8 +9,6 @@ add_action( 'admin_menu', 'wp04_theme_options_add_page' );
  * @since WP-ZeroFour 1.0
  */
 
-error_reporting(E_ALL); ini_set('display_errors', 1);
-
 require_once(ABSPATH . 'wp-admin/includes/screen.php');
 
 function wp04_options_enqueue_scripts() {
