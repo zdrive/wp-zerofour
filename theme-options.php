@@ -117,6 +117,10 @@ function wp04_theme_options_do_page() {
 	if ($DemoMode != "false"){$DemoMode = "true";}
 	if ($DemoMode == "true"){$DemoModeCheckedTrue = " checked";} else {$DemoModeCheckedFalse = " checked";}
 
+	$TrackingMethod = $options['gaTrackingMethod'];
+	$TrackingMethodCheckedGtag = $TrackingMethodCheckedAnalytics = "";
+	if ($TrackingMethod != "analytics"){$TrackingMethod = "gtag";}
+	if ($TrackingMethod == "gtag"){$TrackingMethodCheckedGtag = " checked";} else {$TrackingMethodCheckedAnalytics = " checked";}
 	?>
 	<div class="wrap">
 		<?php 
@@ -141,7 +145,7 @@ function wp04_theme_options_do_page() {
 						<td>
 							<label class="description" for="wp04_theme_options[demo_mode]-true">True&nbsp;</label><input type="radio"<?php echo $DemoModeCheckedTrue; ?> id="wp04_theme_options[demo_mode]-true" name="wp04_theme_options[demo_mode]" value="true" />
 							&nbsp;&nbsp;<label class="description" for="wp04_theme_options[demo_mode]-false">False&nbsp;</label><input type="radio"<?php echo $DemoModeCheckedFalse; ?> id="wp04_theme_options[demo_mode]-false" name="wp04_theme_options[demo_mode]" value="false" />
-							<span class="description"><?php _e('Demo Mode fills your site with sample content, and tells you how to update it.', 'wpzerofour' ); ?></span>
+							<span class="description"><?php _e('(Demo Mode uses sample content to fill in the empty areas of your site)', 'wpzerofour' ); ?></span>
 						</td>
 					</tr>
 				</tbody>
@@ -149,16 +153,32 @@ function wp04_theme_options_do_page() {
 
 			<h3 class="title"><?php _e( 'Analytics and Tracking', 'wpzerofour' ); ?></h3>
 
-			<table class="form-table">
+			<table class="form-table" style="width:auto;">
 				<tbody>
 					<tr>
 						<th scope="row"><label class="description" for="wp04_theme_options[gaID]"><?php _e( 'Google Analytics Profile ID', 'wpzerofour' ); ?></label></th>
 						<td><input id="wp04_theme_options[gaID]" class="regular-text" type="text" name="wp04_theme_options[gaID]" value="<?php esc_attr_e( $options['gaID'] ); ?>" placeholder="e.g. UA-12345678-1" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><label class="description" for="wp04_theme_options[tracking]"><?php _e( 'Other Tracking Code', 'wpzerofour' ); ?></label></th>
-						<td><textarea id="wp04_theme_options[tracking]" class="large-text" cols="30" rows="8" name="wp04_theme_options[tracking]"><?php echo esc_textarea( $options['tracking'] ); ?></textarea></td>
+						<th scope="row"><?php _e( 'Google Analytics Tracking', 'wpzerofour' ); ?></th>
+						<td>
+							<label class="description" for="wp04_theme_options[gaTrackingMethod]-gtag">Global Site Tag (gtag.js)&nbsp;</label><input type="radio"<?php echo $TrackingMethodCheckedGtag; ?> id="wp04_theme_options[gaTrackingMethod]-gtag" name="wp04_theme_options[gaTrackingMethod]" value="gtag" />
+							&nbsp;&nbsp;<label class="description" for="wp04_theme_options[gaTrackingMethod]-analytics">Analytics.js&nbsp;</label><input type="radio"<?php echo $TrackingMethodCheckedAnalytics; ?> id="wp04_theme_options[gaTrackingMethod]-analytics" name="wp04_theme_options[gaTrackingMethod]" value="analytics" />
+							<!-- <span class="description"><?php // _e('Demo Mode fills your site with sample content, and tells you how to update it.', 'wpzerofour' ); ?></span> -->
+						</td>
 					</tr>
+
+					<tr><td colspan="2"><hr></td></tr>
+
+					<tr>
+						<th scope="row"><label class="description" for="wp04_theme_options[tracking_head]"><?php _e( 'Other Tracking (Header)', 'wpzerofour' ); ?></label></th>
+						<td><textarea id="wp04_theme_options[tracking_head]" class="regular-text" cols="30" rows="8" name="wp04_theme_options[tracking_head]"><?php echo esc_textarea( $options['tracking_head'] ); ?></textarea></td>
+					</tr>
+					<tr>
+						<th scope="row"><label class="description" for="wp04_theme_options[tracking]"><?php _e( 'Other Tracking (Footer)', 'wpzerofour' ); ?></label></th>
+						<td><textarea id="wp04_theme_options[tracking]" class="regular-text" cols="30" rows="8" name="wp04_theme_options[tracking]"><?php echo esc_textarea( $options['tracking'] ); ?></textarea></td>
+					</tr>
+
 				</tbody>
 			</table>
 
@@ -168,20 +188,20 @@ function wp04_theme_options_do_page() {
 
 			<h3 class="title"><?php _e( 'Centerpiece Settings', 'wpzerofour' ); ?></h3>
 
-			<table class="form-table">
+			<table class="form-table" style="width:auto;">
 				<tbody>
 					<tr>
 						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_headline]"><?php _e( 'Main Headline', 'wpzerofour' ); ?></label></th>
-						<td><input id="wp04_theme_options[centerpiece_headline]" class="regular-text" type="text" name="wp04_theme_options[centerpiece_headline]" value="<?php esc_attr_e( $options['centerpiece_headline'] ); ?>" /></td>
+						<td><input id="wp04_theme_options[centerpiece_headline]" class="regular-text" type="text" name="wp04_theme_options[centerpiece_headline]" value="<?php esc_attr_e( $options['centerpiece_headline'] ); ?>" placeholder="(e.g., ZeroFour: A Free Responsive Site Template...)" /></td>
 					</tr>
 					<tr>
 						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_subheading]"><?php _e( 'Subheading', 'wpzerofour' ); ?></label></th>
-						<td><input id="wp04_theme_options[centerpiece_subheading]" class="regular-text" type="text" name="wp04_theme_options[centerpiece_subheading]" value="<?php esc_attr_e( $options['centerpiece_subheading'] ); ?>" /></td>
+						<td><input id="wp04_theme_options[centerpiece_subheading]" class="regular-text" type="text" name="wp04_theme_options[centerpiece_subheading]" value="<?php esc_attr_e( $options['centerpiece_subheading'] ); ?>" placeholder="(e.g., Does This Statement Make You Want to Click...)" /></td>
 					</tr>
 					<tr>
 						<th scope="row"><label class="description" for="wp04_theme_options[centerpiece_button_label]"><?php _e( 'Button Label', 'wpzerofour' ); ?></label></th>
 						<td>
-							<input id="wp04_theme_options[centerpiece_button_label]" class="regular-text" type="text" name="wp04_theme_options[centerpiece_button_label]" value="<?php esc_attr_e( $options['centerpiece_button_label'] ); ?>" />
+							<input id="wp04_theme_options[centerpiece_button_label]" class="regular-text" type="text" name="wp04_theme_options[centerpiece_button_label]" value="<?php esc_attr_e( $options['centerpiece_button_label'] ); ?>" placeholder="(e.g., Yes it Does)" />
 							<span class="description"><?php _e('Leave blank to exclude button.', 'wpzerofour' ); ?></span>
 						</td>
 					</tr>
@@ -232,7 +252,7 @@ function wp04_theme_options_do_page() {
 					</tr>
 					<tr>
 						<th scope="row"><label class="description" for="wp04_theme_options[major_subheading]"><?php _e( 'Major Subheading', 'wpzerofour' ); ?></label></th>
-						<td><input id="wp04_theme_options[major_subheading]" class="regular-text" type="text" name="wp04_theme_options[major_subheading]" value="<?php esc_attr_e( $options['major_subheading'] ); ?>"  placeholder="(e.g., And this is where we talk about why we're &lt;strong>pretty awesome&lt;/strong> ...)"/></td>
+						<td><input id="wp04_theme_options[major_subheading]" class="regular-text" type="text" name="wp04_theme_options[major_subheading]" value="<?php esc_attr_e( $options['major_subheading'] ); ?>"  placeholder="(e.g., And this is where we talk about...)"/></td>
 					</tr>
 				</tbody>
 			</table>
@@ -248,7 +268,7 @@ function wp04_theme_options_do_page() {
 					<tr>
 						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-1]"><?php _e( 'Heading Image 1', 'wpzerofour' ); ?></label></th>
 						<td>
-							<input id="wp04_theme_options[image_heading_photo-1]" style="width: 15em;" type="text" name="wp04_theme_options[image_heading_photo-1]" value="<?php echo esc_url( $options['image_heading_photo-1'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
+							<input id="wp04_theme_options[image_heading_photo-1]" style="width: 15em;" type="text" name="wp04_theme_options[image_heading_photo-1]" value="<?php echo esc_url( $options['image_heading_photo-1'] ); ?>" placeholder="(Ideal proportion is 16x9)" /> 
 							<span class="HideMobi" style="padding-left: 4%"></span><input id="upload_heading_image-1" type="button" class="button upload_image_button" value="<?php _e( 'Upload Image 1', 'wpzerofour' ); ?>" />
 						</td>
 					</tr>
@@ -280,7 +300,7 @@ function wp04_theme_options_do_page() {
 					<tr>
 						<th style="padding-left: 1%" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-2]"><?php _e( 'Heading Image 2', 'wpzerofour' ); ?></label></th>
 						<td>
-							<input id="wp04_theme_options[image_heading_photo-2]" style="width: 15em;" type="text" name="wp04_theme_options[image_heading_photo-2]" value="<?php echo esc_url( $options['image_heading_photo-2'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
+							<input id="wp04_theme_options[image_heading_photo-2]" style="width: 15em;" type="text" name="wp04_theme_options[image_heading_photo-2]" value="<?php echo esc_url( $options['image_heading_photo-2'] ); ?>" placeholder="(Ideal proportion is 16x9)" /> 
 							<span class="HideMobi" style="padding-left: 4%"></span><input id="upload_heading_image-2" type="button" class="button" value="<?php _e( 'Upload Image 2', 'wpzerofour' ); ?>" />
 						</td>
 					</tr>
@@ -311,7 +331,7 @@ function wp04_theme_options_do_page() {
 					<tr>
 						<th style="padding-left: 1%;" scope="row"><label class="description" for="wp04_theme_options[image_heading_photo-3]"><?php _e( 'Heading Image 3', 'wpzerofour' ); ?></label></th>
 						<td>
-							<input id="wp04_theme_options[image_heading_photo-3]" style="width: 15em;" type="text" name="wp04_theme_options[image_heading_photo-3]" value="<?php echo esc_url( $options['image_heading_photo-3'] ); ?>" placeholder="(Ideal size is about 384x227 px.)" /> 
+							<input id="wp04_theme_options[image_heading_photo-3]" style="width: 15em;" type="text" name="wp04_theme_options[image_heading_photo-3]" value="<?php echo esc_url( $options['image_heading_photo-3'] ); ?>" placeholder="(Ideal proportion is 16x9)" /> 
 							<span class="HideMobi" style="padding-left: 4%"></span><input id="upload_heading_image-3" type="button" class="button" value="<?php _e( 'Upload Image 3', 'wpzerofour' ); ?>" />
 						</td>
 					</tr>

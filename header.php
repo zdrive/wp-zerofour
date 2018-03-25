@@ -84,6 +84,34 @@ if ($wp04_custom_sitelogo != ""){
 endif;
 
 wp_head(); 
+
+$gaID = $TrackingMethod = "";
+$TrackingMethod = $wp04_theme_options['gaTrackingMethod'];
+// $gaID = get_option( 'gaID' );
+if($TrackingMethod == "gtag") {
+	$gaID = $wp04_theme_options['gaID'];
+	// if( isset( $gaID ) ) :
+	if( !empty( $gaID ) ) :
+	?>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $gaID; ?>"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', '<?php echo $gaID; ?>');
+	</script>
+
+	<?php endif; // END if( !empty( $gaID )
+} // END if($TrackingMethod == "gtag")
+
+$trackingCode = "";
+$trackingCode = $wp04_theme_options['tracking_head'];
+if( !empty( $trackingCode ) ) {
+	echo $trackingCode . "\n";
+}
+
 ?>
 </head>
 	<body <?php if( is_home() ) : body_class('homepage'); else: body_class(); endif; ?>>
