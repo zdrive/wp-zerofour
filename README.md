@@ -26,7 +26,6 @@ Working Demo: http://www.west-la.info/
 * WP Admin... Appearance... WP-ZeroFour Options (set options)
 * Mobile Menu: see "wp-zerofour-mobile-menu-options.md"
 * Make two pages, "Show on Homepage" in WP-ZeroFour Options
-* Edit static text in home.php
 * Make three regular posts with featured images
 * Make a sticky post with featured image
 
@@ -46,22 +45,15 @@ Working Demo: http://www.west-la.info/
 -- Check box: "Primary navigation along the top of the template"
 4. Drag items into your menu. After you make some pages you can come back and add them to the menu as desired
 5. In WP Admin, go to Appearance... WP-ZeroFour Options
-6. Make changes to tabs: General, Home Settings, Media Section, 404 Page and Contact
+6. Make changes to tabs: General, Home Settings, Home Image Headings, Media Section, 404 Page and Contact
 7. Click the "Save Options" button to complete the changes
 * Note: If you don't have all the information needed to complete WP-ZeroFour Options, Demo Mode will fill in whatever is missing
 
 ### C. Headings on the Home Page
 * The Headings section is comprised of three images with headings, subtitles and icons. There is some text below.
-* Currently this section is hard-coded into home.php
-1. Open home.php with a text editor
-2. Edit the HTML:  
-a. Photos: Edit references to pic01.jpg, pic02.jpg and pic03.jpg  
-b. Headings: Edit text in H3 elements  
-c. Subtitles: Edit text in "span class=byline" elements  
-d. Icons: Edit references to fa-user, fa-cog and fa-bar-chart-o  
-e. Icon reference: https://fontawesome.com/v4.7.0/cheatsheet/  
-f. Wording at bottom: Edit text in paragraph near the bottom  
-* Note: The "major_heading" and "major_subheading" are controlled by the WP-ZeroFour Options. Do not edit this part.
+* Update in WP-ZeroFour Options (Home Image Headings) 
+* Images that are too small will render blurry on a tablet
+* 900x567 pixels works well for all resolutions
 
 ### D. Subheadings on the Home Page
 * There are two subheadings, accompanied by text and butons.
