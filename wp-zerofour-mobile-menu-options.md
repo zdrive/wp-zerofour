@@ -1,56 +1,59 @@
 ## WP Mobile Menu settings for WP-ZeroFour
 The settings described below are intended to reproduce the original Zero Four design for mobile resolutions.  
 
-### Installation
-1. WP Admin... Plugins... Add New  
+### Installation  
+In WP Admin, select "Plugins... Add New" from the left menu 
 - Search plugins... keyword: "WP Mobile Menu" 
-- (choose the plugin by Takanakui)
+- Choose the plugin by Takanakui
 - Install/Activate
 
 ### Setup
 In WP Admin, select "Mobile Menu Options" from the left menu
 
-1. General Options Tab  
+1. "General Options" Tab  
 - Enable Mobile Menu: ON  
 - Mobile Menu Visibility (Width Trigger): 480px  
 - Enable Left Menu: ON  
 - Enable Right Menu: OFF  
 - Menu Display Type: Slideout Over Content  
-- Advanced Options:  
--- Hide elements by default: all are checked  
--- Hide Elements: .main-navigation  
--- Sticky Html Elements: (empty by default, adjust as desired)  
--- Custom CSS: (empty by default, adjust as desired)  
--- Custom JS: (empty by default, adjust as desired)  
+*Advanced Options*  
+- Hide elements by default: all are checked  
+- Hide Elements: .main-navigation  
+- Sticky Html Elements: (empty by default, adjust as desired)  
+- Custom CSS: (empty by default, adjust as desired)  
+- Custom JS: (empty by default, adjust as desired)  
 
-2. Header options Tab  
-- Main options  
--- Naked Header: NO  
--- Disable Logo/Text: NO  
--- Site Logo: Logo  
--- Logo: (A sample logo that was made at cooltext.com can be found here:  
----- /wp-content/themes/wp-zerofour-master/images/stock/WP-ZeroFour-CoolText_195x35.gif)  
----- Source: https://cooltext.com/Logo-Design-Gold-Outline  
+2. "Header options" Tab  
+*Main options*  
+- Naked Header: NO  
+- Disable Logo/Text: NO  
+*Logo options*  
+- Site Logo: Logo  
+- Logo: (A sample logo that was made at cooltext.com can be found here:  
+-- /wp-content/themes/wp-zerofour-master/images/stock/WP-ZeroFour-CoolText_195x35.gif)  
+-- Source: https://cooltext.com/Logo-Design-Gold-Outline  
 - Logo Height: 35px (adjust as needed for your logo)  
 - Disable Logo URL: NO  
 - Alternative Logo URL:  
 - Logo/Text Top Margin: 10px (adjust as needed for your logo)
-- Header options  
+*Header options*  
 - Header Height: 58px  
 - Header Text: (empty)  
 - Header Logo/Text Alignment: Center  
 - Header Logo/Text Left Margin: 20px  
 - Header Logo/Text Right Margin: 20px  
-- Header Menu Font: Font Family: Dosis  
-- Color: (dark gray. Google #2d2d2d for reference)  
-- Font Size: 20px  
-- Font Weight: inherit  
-- Font Style: normal  
-- Line Height: 1.5em  
-- Letter Spacing: normal  
-- Text Transform: none
+- Header Menu Font:  
+-- Font Family: Dosis  
+-- Color: (dark gray. Google #2d2d2d for reference)  
+-- Font Size: 20px  
+-- Font Weight: inherit  
+-- Font Style: normal  
+-- Line Height: 1.5em  
+-- Letter Spacing: normal  
+-- Text Transform: none
+-- Color: (dark gray. Google #2d2d2d for reference)  
 
-3. Left Menu options Tab  
+3. "Left Menu options" Tab  
 - Left Menu: Top Nav (needs to be set up first in Menus)
 - Parent Link open submenu: NO  
 *Menu Icon*  
@@ -79,7 +82,7 @@ In WP Admin, select "Mobile Menu Options" from the left menu
 - Panel Background Image Opacity: 100 %
 - Panel Background Image Size: Cover
 - Panel Background Gradient Css: (empty)
-- Menu Panel Width Units: pixels
+- Menu Panel Width Units: Pixels
 - Menu Panel Width(Pixels): 150 px
 - Menu Panel Width(Percentage): 40 %
 - Left Menu Content Padding: 0 %
