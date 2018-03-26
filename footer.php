@@ -121,7 +121,7 @@ if (trim(strtolower($wp04_demo_mode)) != "false"){
 								<h2 class="widget-title">Photo Contributors</h2>
 								<div class="textwidget custom-html-widget">
 									<ul class="divided">
-										<li><a target="_blank" href="https://unsplash.com/photos/LMlVa3QDEXs">Aaron Burden</a></li>
+										<li><a target="_blank" href="https://unsplash.com/photos/v2WBFSBeOew">Joe deSousa</a></li>
 										<li><a target="_blank" href="https://unsplash.com/photos/Ic0q_M542Is">Joe Pascavage</a></li>
 										<li><a target="_blank" href="https://unsplash.com/photos/eWFFLU2-Sik">Marten Bjork</a></li>
 										<li><a target="_blank" href="https://unsplash.com/photos/Oanp6vpk3A8">Matt Lamers</a></li>
