@@ -23,11 +23,11 @@ In WP Admin, select "Mobile Menu Options" from the left menu
 - Custom CSS: (empty by default, adjust as desired)  
 - Custom JS: (empty by default, adjust as desired)  
 
-2. "Header options" Tab  
-*Main options*  
+2. "Header options" Tab
+*Main options*
 - Naked Header: NO  
 - Disable Logo/Text: NO  
-*Logo options*  
+*Logo options*
 - Site Logo: Logo  
 - Logo: (A sample logo that was made at cooltext.com can be found here:  
 -- /wp-content/themes/wp-zerofour-master/images/stock/WP-ZeroFour-CoolText_195x35.gif)  
@@ -35,7 +35,7 @@ In WP Admin, select "Mobile Menu Options" from the left menu
 - Logo Height: 35px (adjust as needed for your logo)  
 - Disable Logo URL: NO  
 - Alternative Logo URL:  
-- Logo/Text Top Margin: 10px (adjust as needed for your logo)
+- Logo/Text Top Margin: 10px (adjust as needed for your logo)  
 *Header options*  
 - Header Height: 58px  
 - Header Text: (empty)  
@@ -105,7 +105,7 @@ The right tab is not used for this implemntation. The settings can remain as def
 - Header Background Color: rgba(59,62,69,0.9)
 - Header Text Color: #222
 - Text After Left Icon: #222
-- Text Before Right Icon: #222
+- Text Before Right Icon: #222  
 *Left Menu Colors*
 - Left Menu Icon Color: #c9c9c9
 - Background Color: rgba(59,62,69,0.9)
@@ -113,7 +113,7 @@ The right tab is not used for this implemntation. The settings can remain as def
 - Background Hover Color: #a3d3e8
 - Hover Text Color: #fff
 - Submenu Background Color: #eff1f1
-- Submenu Text Color: #222
+- Submenu Text Color: #222  
 *Right Menu Colors*
 - (not applicable for this implementation that only uses Left Menu - following are default values)
 - Right Menu Icon Color: #886838
