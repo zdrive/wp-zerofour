@@ -44,7 +44,7 @@ get_header(); ?>
 						</div>  <!-- .container -->
 					</div>  <!-- .inner -->
 				</div>  <!-- .main-wrapper-style2 -->
-<?php get_template_part( 'loop', 'recent-posts' ); ?>
+<?php // get_template_part( 'loop', 'recent-posts' ); ?>
 			</div> <!-- .main-wrapper -->
 
 <?php get_footer(); ?>
